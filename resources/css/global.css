@@ -100,6 +100,7 @@ span{
 
 .titles{
 	padding:5px 0px;
+	margin-left: -2px;
 }
 
 @media screen and (max-width: 500px) {
@@ -156,19 +157,22 @@ span{
 	.show {display:block;}
 
 	table td{
-	display: flex;
-	padding: 0px 0px;
-	text-align: left;
-	vertical-align: top;
-	word-wrap: break-word;
-	max-width: 500px;
+		display: flex;
+		padding: 0px 0px;
+		margin-left:-2px;
+		text-align: left;
+		vertical-align: top;
+		word-wrap: break-word;
+		max-width: 500px;
 	}
 
 	.stars{
-		padding:0px 0px;
+		padding: 0px 0px;
+		margin-top: -2px;
+		margin-bottom: 10px;
 	}
 
 	.titles{
-		padding:0px 0px;
+		padding: 0px 0px;
 	}
 }
