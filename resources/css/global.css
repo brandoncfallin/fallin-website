@@ -35,6 +35,8 @@ td{
 	padding: 5px 10px;
 	text-align: left;
 	vertical-align: top;
+	word-wrap: break-word;
+	max-width: 150px;
 }
 
 #dark-mode-toggle{
