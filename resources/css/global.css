@@ -98,6 +98,10 @@ span{
 	padding:0px 5px;
 }
 
+.titles{
+	padding:5px 0px;
+}
+
 @media screen and (max-width: 500px) {
 	.profile-image{
 		width: 40%;
@@ -108,7 +112,7 @@ span{
 	}
 
 	.work-exp-image{
-		width: 12%;
+		width: 16%;
 		vertical-align: middle;
 		border-radius: 7%;
 	}
@@ -161,6 +165,10 @@ span{
 	}
 
 	.stars{
+		padding:0px 0px;
+	}
+
+	.titles{
 		padding:0px 0px;
 	}
 }
