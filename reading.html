@@ -10,85 +10,93 @@
     </head>
 
     <body class="">
-        <button id="dark-mode-toggle" onclick="darkModeToggle()">Dark Mode</button>
-        <nav>
+        <nav class="nav-bar">
             <a href="index.html">Home</a>
             <a href="reading.html">Reading</a>
             <a href="notes.html">Notes</a>
             <a href="data/pdf/fallin-resume.pdf" target="_blank">Resume</a>
+            <button id="dark-mode-toggle" onclick="darkModeToggle()" class="nav-bar" style="float:right;">Dark Mode</button>
+        </nav>
+        <nav class="nav-mobile">
+            <button onclick="mobileDrop()" class="nav-button">Dropdown</button>
+            <div id="nav-menu" class="drop-content">
+                <a href="index.html">Home</a>
+                <a href="reading.html">Reading</a>
+                <a href="notes.html">Notes</a>
+                <a href="data/pdf/fallin-resume.pdf" target="_blank">Resume</a>
+            </div>
+            
+            <button id="dark-mode-toggle-mobile" onclick="darkModeToggle()" class="nav-mobile" style="float:right;">Dark Mode</button>
         </nav>
     
         <h1>Reading</h1>
         <p>Lately, I've been carrying my Kindle everywhere in an effort to reduce screen time and social media usage. Here's a list of the books I've been reading.</p>
+        <h4 style="margin-bottom:0px;">2023</h4>
         <table style="background-color:rgba(0, 0, 0, 0);">
-            <tr>
-                <th>2023</th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <td style="padding:5px 0px;">Dune Messiah</td>
-                <td>Frank Herbert</td>
-                <td>06-20-2023</td>
-                <td style="padding:0px 5px;">★★★</td>
-            </tr>
-
-            <tr>
-                <td style="padding:5px 0px;">East of Eden</td>
-                <td>John Steinbeck</td>
-                <td>06-16-2023</td>
-                <td style="padding:0px 5px;">★★★★★</td>
-            </tr>
-
-            <tr>
-                <td style="padding:5px 0px;">Stolen Focus</td>
-                <td>Johann Kari</td>
-                <td>06-15-2023</td>
-                <td style="padding:0px 5px;">★★★</td>
-            </tr>
-
-            <tr>
-                <td style="padding:5px 0px;">The Body</td>
-                <td>Bill Bryson</td>
-                <td>05-09-2023</td>
-                <td style="padding:0px 5px;">★★★</td>
-            </tr>
-            
-            <tr>
-                <td style="padding:5px 0px;">The Hidden Life of Trees</td>
-                <td>Peter Wohlleben</td>
-                <td>04-21-2023</td>
-                <td style="padding:0px 5px;">★★</td>
-            </tr>
-
-            <tr>
-                <td style="padding:5px 0px;">A People's History of the United States</td>
-                <td>Howard Zinn</td>
-                <td>03-30-2023</td>
-                <td style="padding:0px 5px;">★★★★★</td>
-            </tr>
-            
-            <tr>
-                <td style="padding:5px 0px;">Into the Wild</td>
-                <td>Jon Krakauer</td>
-                <td>02-24-2023</td>
-                <td style="padding:0px 5px;">★★★★</td>
-            </tr>
-
-            <tr>
-                <td style="padding:5px 0px;">Dune</td>
-                <td>Frank Herbert</td>
-                <td>02-12-2023</td>
-                <td style="padding:0px 5px;">★★★★★</td>
-            </tr>
-            
-            <tr>
-                <td style="padding:5px 0px;">1491: New Revelations of the Americas Before Columbus</td>
-                <td>Charles C. Mann</td>
-                <td>02-05-2023</td>
-                <td style="padding:0px 5px;">★★★</td>
-            </tr>
+            <tbody>
+                <tr>
+                    <td style="padding:5px 0px;">Dune Messiah</td>
+                    <td>Frank Herbert</td>
+                    <td>06-20-2023</td>
+                    <td class="stars">★★★</td>
+                </tr>
+    
+                <tr>
+                    <td style="padding:5px 0px;">East of Eden</td>
+                    <td>John Steinbeck</td>
+                    <td>06-16-2023</td>
+                    <td class="stars">★★★★★</td>
+                </tr>
+    
+                <tr>
+                    <td style="padding:5px 0px;">Stolen Focus</td>
+                    <td>Johann Kari</td>
+                    <td>06-15-2023</td>
+                    <td class="stars">★★★</td>
+                </tr>
+    
+                <tr>
+                    <td style="padding:5px 0px;">The Body</td>
+                    <td>Bill Bryson</td>
+                    <td>05-09-2023</td>
+                    <td class="stars">★★★</td>
+                </tr>
+                
+                <tr>
+                    <td style="padding:5px 0px;">The Hidden Life of Trees</td>
+                    <td>Peter Wohlleben</td>
+                    <td>04-21-2023</td>
+                    <td class="stars">★★</td>
+                </tr>
+    
+                <tr>
+                    <td style="padding:5px 0px;">A People's History of the United States</td>
+                    <td>Howard Zinn</td>
+                    <td>03-30-2023</td>
+                    <td class="stars">★★★★★</td>
+                </tr>
+                
+                <tr>
+                    <td style="padding:5px 0px;">Into the Wild</td>
+                    <td>Jon Krakauer</td>
+                    <td>02-24-2023</td>
+                    <td class="stars">★★★★</td>
+                </tr>
+    
+                <tr>
+                    <td style="padding:5px 0px;">Dune</td>
+                    <td>Frank Herbert</td>
+                    <td>02-12-2023</td>
+                    <td class="stars">★★★★★</td>
+                </tr>
+                
+                <tr>
+                    <td style="padding:5px 0px;">1491: New Revelations of the Americas Before Columbus</td>
+                    <td>Charles C. Mann</td>
+                    <td>02-05-2023</td>
+                    <td class="stars">★★★</td>
+                </tr>
+            </tbody>
           </table> 
         
     
