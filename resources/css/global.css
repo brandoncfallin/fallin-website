@@ -19,7 +19,7 @@ body{
 	font-family: Arial, sans-serif;
 	margin: auto;
 	padding:18px;
-	max-width: 600px;
+	max-width: 650px;
 	font-size:18px;
 	text-align: left;
 	background-color:white;
@@ -28,8 +28,13 @@ body{
 
 table{
 	font-size:16px;
-	background-color:white;
 	text-align: left;
+}
+
+td{
+	padding: 5px 10px;
+	text-align: left;
+	vertical-align: top;
 }
 
 #dark-mode-toggle{
@@ -52,6 +57,23 @@ table{
 	color:#22884C;
 }
 
-.dark table{
-	background-color: #222;
+.animated{
+	transition-property: background-color;
+	transition-duration: 500ms;
+}
+
+.bottom-gone-h1{
+	margin-bottom: -20px;
+}
+
+.bottom-gone-h2{
+	margin-bottom: -10px;
+}
+
+span{
+	background-color: #e0e0e0;
+}
+
+.dark span{
+	background-color: #757575;
 }

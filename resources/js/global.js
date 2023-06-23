@@ -1,12 +1,15 @@
 function darkModeToggle() {
-    var element = document.body;
-    element.classList.toggle("dark");
 
-    var change = document.getElementById("dark-mode-toggle");
-    if (change.innerHTML === "Dark Mode") {
-        change.innerHTML = "Light Mode";
+    if (localStorage.getItem("dark-mode") == "dark") {
+        document.body.classList.add("animated");
+        document.body.classList.remove("dark");
+        localStorage.setItem("dark-mode", "light");
+        document.getElementById("dark-mode-toggle").innerHTML = "Dark Mode";
     }
     else {
-        change.innerHTML = "Dark Mode";
+        document.body.classList.add("animated");
+        document.body.classList.add("dark");
+        localStorage.setItem("dark-mode", "dark");
+        document.getElementById("dark-mode-toggle").innerHTML = "Light Mode";
     }
   } 

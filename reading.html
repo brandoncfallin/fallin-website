@@ -1,6 +1,6 @@
 <html>
     <head> 
-        <title>Brandon Fallin - Reading</title>
+        <title>Reading - Brandon Fallin</title>
         <meta charset="UTF-8">
         <meta name="description" content="Personal reading.">
         <meta name="keywords" content="aerospace,engineering,controls,differential,privacy">
@@ -14,13 +14,13 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="reading.html">Reading</a>
-            <a href="">Notes</a>
-            <a href="">Resume</a>
+            <a href="notes.html">Notes</a>
+            <a href="data/pdf/fallin-resume.pdf" target="_blank">Resume</a>
         </nav>
     
         <h1>Reading</h1>
         <p>Lately, I've been carrying my Kindle everywhere in an effort to reduce screen time and social media usage. Here's a list of the books I've been reading.</p>
-        <table>
+        <table style="background-color:rgba(0, 0, 0, 0);">
             <tr>
                 <th>2023</th>
                 <th></th>
@@ -28,66 +28,66 @@
                 <th></th>
             </tr>
             <tr>
-                <td>Dune Messiah</td>
+                <td style="padding:5px 0px;">Dune Messiah</td>
                 <td>Frank Herbert</td>
                 <td>06-20-2023</td>
-                <td>★★★</td>
+                <td style="padding:0px 5px;">★★★</td>
             </tr>
 
             <tr>
-                <td>East of Eden</td>
+                <td style="padding:5px 0px;">East of Eden</td>
                 <td>John Steinbeck</td>
                 <td>06-16-2023</td>
-                <td>★★★★★</td>
+                <td style="padding:0px 5px;">★★★★★</td>
             </tr>
 
             <tr>
-                <td>Stolen Focus</td>
+                <td style="padding:5px 0px;">Stolen Focus</td>
                 <td>Johann Kari</td>
                 <td>06-15-2023</td>
-                <td>★★★</td>
+                <td style="padding:0px 5px;">★★★</td>
             </tr>
 
             <tr>
-                <td>The Body</td>
+                <td style="padding:5px 0px;">The Body</td>
                 <td>Bill Bryson</td>
                 <td>05-09-2023</td>
-                <td>★★★</td>
+                <td style="padding:0px 5px;">★★★</td>
             </tr>
             
             <tr>
-                <td>The Hidden Life of Trees</td>
+                <td style="padding:5px 0px;">The Hidden Life of Trees</td>
                 <td>Peter Wohlleben</td>
                 <td>04-21-2023</td>
-                <td>★★</td>
+                <td style="padding:0px 5px;">★★</td>
             </tr>
 
             <tr>
-                <td>A People's History of the United States</td>
+                <td style="padding:5px 0px;">A People's History of the United States</td>
                 <td>Howard Zinn</td>
                 <td>03-30-2023</td>
-                <td>★★★★★</td>
+                <td style="padding:0px 5px;">★★★★★</td>
             </tr>
             
             <tr>
-                <td>Into the Wild</td>
+                <td style="padding:5px 0px;">Into the Wild</td>
                 <td>Jon Krakauer</td>
                 <td>02-24-2023</td>
-                <td>★★★★</td>
+                <td style="padding:0px 5px;">★★★★</td>
             </tr>
 
             <tr>
-                <td>Dune</td>
+                <td style="padding:5px 0px;">Dune</td>
                 <td>Frank Herbert</td>
                 <td>02-12-2023</td>
-                <td>★★★★★</td>
+                <td style="padding:0px 5px;">★★★★★</td>
             </tr>
             
             <tr>
-                <td>1491: New Revelations of the Americas Before Columbus</td>
+                <td style="padding:5px 0px;">1491: New Revelations of the Americas Before Columbus</td>
                 <td>Charles C. Mann</td>
                 <td>02-05-2023</td>
-                <td>★★★</td>
+                <td style="padding:0px 5px;">★★★</td>
             </tr>
           </table> 
         
@@ -102,4 +102,26 @@
         </footer>
         <script type="text/javascript" src="resources/js/global.js"></script>
     </body>
+    <script>
+        var darkMode;
+
+        if (localStorage.getItem("dark-mode")) {
+            darkMode = localStorage.getItem("dark-mode");
+        } else {
+            darkMode = "light";
+        }
+
+        localStorage.setItem("dark-mode", darkMode);
+
+        if (localStorage.getItem("dark-mode") == "dark") {
+            document.body.classList.remove("animated");
+            document.body.classList.add("dark");
+            document.getElementById("dark-mode-toggle").innerHTML = "Light Mode";
+        }
+        if (localStorage.getItem("dark-mode") == "light") {
+            document.body.classList.remove("animated");
+            document.body.classList.remove("dark");
+            document.getElementById("dark-mode-toggle").innerHTML = "Dark Mode";
+        }
+    </script>
 </html>
