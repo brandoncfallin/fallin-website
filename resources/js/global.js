@@ -1,40 +1,86 @@
+// Toggles dark mode on click 
 function darkModeToggle() {
-
-    if (localStorage.getItem("dark-mode") == "dark") {
-      document.body.classList.add("animated");
-      document.body.classList.remove("dark");
-      document.getElementById("nav-menu").classList.remove ("dark");
-      localStorage.setItem("dark-mode", "light");
-      
-      document.getElementById("dark-mode-toggle").src = "data/icons/moon.svg";
-      document.getElementById("dark-mode-toggle-mobile").src = "data/icons/moon.svg";
-      document.getElementById("nav-icon").src = "data/icons/menu-blk.svg";
-    }
-    else {
-      document.body.classList.add("animated");
-      document.body.classList.add("dark");
-      document.getElementById("nav-menu").classList.add("dark");
-      localStorage.setItem("dark-mode", "dark");
-      
-      document.getElementById("dark-mode-toggle").src = "data/icons/sun.svg";
-      document.getElementById("dark-mode-toggle-mobile").src = "data/icons/sun.svg";
-      document.getElementById("nav-icon").src = "data/icons/menu-wht.svg";
-    }
+  if (localStorage.getItem("dark-mode") == "dark") {
+    document.body.classList.add("animated");
+    document.body.classList.remove("dark");
+    document.getElementById("nav-menu").classList.remove ("dark");
+    localStorage.setItem("dark-mode", "light");
+    
+    document.getElementById("dark-mode-toggle").src = "data/icons/moon.svg";
+    document.getElementById("dark-mode-toggle-mobile").src = "data/icons/moon.svg";
+    document.getElementById("nav-icon").src = "data/icons/menu-blk.svg";
+  }
+  else {
+    document.body.classList.add("animated");
+    document.body.classList.add("dark");
+    document.getElementById("nav-menu").classList.add("dark");
+    localStorage.setItem("dark-mode", "dark");
+    
+    document.getElementById("dark-mode-toggle").src = "data/icons/sun.svg";
+    document.getElementById("dark-mode-toggle-mobile").src = "data/icons/sun.svg";
+    document.getElementById("nav-icon").src = "data/icons/menu-wht.svg";
+  }
   } 
 
+// Toggles mobile menu on click
 function mobileDrop() {
-    document.getElementById("nav-menu").classList.toggle("show");
+  document.getElementById("nav-menu").classList.toggle("show");
 }
 
+// Closes mobile menu when clicking outside of it
 window.onclick = function(event) {
-    if (!event.target.matches('.nav-button')) {
-      var dropdowns = document.getElementsByClassName("drop-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-        }
+  if (!event.target.matches('.nav-button')) {
+    var dropdowns = document.getElementsByClassName("drop-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
       }
     }
-  } 
+  }
+} 
+
+// Checks user theme preference
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  document.getElementById("nav-icon").src = "data/icons/menu-wht.svg";
+          
+  document.body.classList.remove("animated");
+  document.body.classList.add("dark");
+  document.getElementById("nav-menu").classList.add("dark");
+  
+  document.getElementById("dark-mode-toggle").src = "data/icons/sun.svg";
+  document.getElementById("dark-mode-toggle-mobile").src = "data/icons/sun.svg";
+}
+
+
+// Checks local storage for dark mode preference
+var darkMode;
+if (localStorage.getItem("dark-mode")) {
+  darkMode = localStorage.getItem("dark-mode");
+} 
+else {
+  darkMode = "light";
+}
+
+localStorage.setItem("dark-mode", darkMode);
+
+if (localStorage.getItem("dark-mode") == "dark") {
+  document.getElementById("nav-icon").src = "data/icons/menu-wht.svg";
+  
+  document.body.classList.remove("animated");
+  document.body.classList.add("dark");
+  document.getElementById("nav-menu").classList.add("dark");
+  
+  document.getElementById("dark-mode-toggle").src = "data/icons/sun.svg";
+  document.getElementById("dark-mode-toggle-mobile").src = "data/icons/sun.svg";
+}
+if (localStorage.getItem("dark-mode") == "light") {
+  document.body.classList.remove("animated");
+  document.body.classList.remove("dark");
+  document.getElementById("nav-menu").classList.remove("dark");
+  
+  document.getElementById("dark-mode-toggle").src = "data/icons/moon.svg";
+  document.getElementById("dark-mode-toggle-mobile").src = "data/icons/moon.svg";
+  document.getElementById("nav-icon").src = "data/icons/menu-blk.svg";
+}
