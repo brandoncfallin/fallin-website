@@ -14,17 +14,17 @@
             <a href="index.html">Home</a>
             <a href="reading.html">Reading</a>
             <a href="data/pdf/fallin-resume.pdf" target="_blank">Resume</a>
-            <button id="dark-mode-toggle" onclick="darkModeToggle()" class="nav-bar" style="float:right;">Dark Mode</button>
+            <img id="dark-mode-toggle" src="/data/icons/moon.svg" onclick="darkModeToggle()" class="nav-bar" style="float:right;">
         </nav>
         <nav class="nav-mobile">
-            <button onclick="mobileDrop()" class="nav-button">Menu</button>
+            <img id="nav-icon" src="data/icons/menu-blk.svg" onclick="mobileDrop()" class="nav-button">
             <div id="nav-menu" class="drop-content">
                 <a href="index.html">Home</a>
                 <a href="reading.html">Reading</a>
                 <a href="data/pdf/fallin-resume.pdf" target="_blank">Resume</a>
             </div>
             
-            <button id="dark-mode-toggle-mobile" onclick="darkModeToggle()" class="nav-mobile" style="float:right;">Dark Mode</button>
+            <img id="dark-mode-toggle-mobile" onclick="darkModeToggle()" src="data/icons/moon.svg" class="nav-mobile" style="float:right;">
         </nav>
     
         <h1 style="margin-bottom:0px">Reading</h1>
@@ -98,7 +98,7 @@
           </table> 
         
     
-        <footer>
+          <footer>
             <p>Connect with me:</p>
             <div>
                 <a href="https://linkedin.com/in/brandonfallin" target="_blank">LinkedIn</a>
@@ -120,14 +120,23 @@
         localStorage.setItem("dark-mode", darkMode);
 
         if (localStorage.getItem("dark-mode") == "dark") {
+            document.getElementById("nav-icon").src = "data/icons/menu-wht.svg";
+            
             document.body.classList.remove("animated");
             document.body.classList.add("dark");
-            document.getElementById("dark-mode-toggle").innerHTML = "Light Mode";
+            document.getElementById("nav-menu").classList.add("dark");
+            
+            document.getElementById("dark-mode-toggle").src = "data/icons/sun.svg";
+            document.getElementById("dark-mode-toggle-mobile").src = "data/icons/sun.svg";
         }
         if (localStorage.getItem("dark-mode") == "light") {
             document.body.classList.remove("animated");
             document.body.classList.remove("dark");
-            document.getElementById("dark-mode-toggle").innerHTML = "Dark Mode";
+            document.getElementById("nav-menu").classList.remove("dark");
+            
+            document.getElementById("dark-mode-toggle").src = "data/icons/moon.svg";
+            document.getElementById("dark-mode-toggle-mobile").src = "data/icons/moon.svg";
+            document.getElementById("nav-icon").src = "data/icons/menu-blk.svg";
         }
     </script>
 </html>

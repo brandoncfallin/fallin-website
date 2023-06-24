@@ -14,17 +14,17 @@
             <a href="index.html">Home</a>
             <a href="reading.html">Reading</a>
             <a href="data/pdf/fallin-resume.pdf" target="_blank">Resume</a>
-            <button id="dark-mode-toggle" onclick="darkModeToggle()" class="nav-bar" style="float:right;">Dark Mode</button>
+            <img id="dark-mode-toggle" src="/data/icons/moon.svg" onclick="darkModeToggle()" class="nav-bar" style="float:right;">
         </nav>
         <nav class="nav-mobile">
-            <button onclick="mobileDrop()" class="nav-button">Menu</button>
+            <img id="nav-icon" src="data/icons/menu-blk.svg" onclick="mobileDrop()" class="nav-button">
             <div id="nav-menu" class="drop-content">
                 <a href="index.html">Home</a>
                 <a href="reading.html">Reading</a>
                 <a href="data/pdf/fallin-resume.pdf" target="_blank">Resume</a>
             </div>
             
-            <button id="dark-mode-toggle-mobile" onclick="darkModeToggle()" class="nav-mobile" style="float:right;">Dark Mode</button>
+            <img id="dark-mode-toggle-mobile" onclick="darkModeToggle()" src="data/icons/moon.svg" class="nav-mobile" style="float:right;">
         </nav>
 
         <img src="data/img/fallin.jpg" alt="Portrait of Brandon Fallin." class="profile-image">
@@ -38,15 +38,15 @@
 
         <h2 style="margin-bottom:5px;">Work Experience</h2>
         <div style="display:inline;"><img src="data/img/workxp/uf-logo.png" class="work-exp-image" style="background-color:#2196f3"></div>
-        <p style="display:inline-block;margin-left:5px;vertical-align:middle;word-wrap:break-word;"><strong>University of Florida</strong><br>Graduate Research Assistant<br><span>Aug 2022 - Present</span></p>
+        <p class="work-exp-desc"><strong>University of Florida</strong><br>Graduate Research Assistant<br><span>Aug 2022 - Present</span></p>
         <p style="margin-top:-10px;">Pursuing my PhD in Aerospace Engineering under the advisement of Dr. Matthew Hale. Expected graduation May 2027.</p>
 
         <div style="display:inline;"><img src="data/img/workxp/orbit-logo.png" class="work-exp-image" style="background-color:#9c27b0;"></div>
-        <p style="display:inline-block;margin-left:5px;vertical-align:middle;word-wrap:break-word;"><strong>Orbit</strong><br>Co-Founder<br><span>Mar 2021 - Aug 2022</span></p>
+        <p class="work-exp-desc"><strong>Orbit</strong><br>Co-Founder<br><span>Mar 2021 - Aug 2022</span></p>
         <p style="margin-top:-10px;">Closed a M&A deal with Creatd, Inc. (Nasdaq CM: VOCL). Generated visual identity, web, and social media content in order to execute marketing and advertisement initiatives.</p>
 
         <div style="display:inline;"><img src="data/img/workxp/pdi-logo.png" class="work-exp-image" style="background-color:#f44336;"></div>
-        <p style="display:inline-block;margin-left:5px;vertical-align:middle;word-wrap:break-word;"><strong>Power Design, Inc.</strong><br>Mechanical Engineering Intern<br><span>Jun 2021 - Aug 2021</span></p>
+        <p class="work-exp-desc"><strong>Power Design, Inc.</strong><br>Mechanical Engineering Intern<br><span>Jun 2021 - Aug 2021</span></p>
         <p style="margin-top:-10px;">Worked alongside Plumbing Engineers and Associate Plumbing Designers to produce technical drawings in Revit for multi-family high rise, retail, and amenity spaces.</p>
 
         <footer>
@@ -71,18 +71,23 @@
         localStorage.setItem("dark-mode", darkMode);
 
         if (localStorage.getItem("dark-mode") == "dark") {
+            document.getElementById("nav-icon").src = "data/icons/menu-wht.svg";
+            
             document.body.classList.remove("animated");
             document.body.classList.add("dark");
             document.getElementById("nav-menu").classList.add("dark");
-            document.getElementById("dark-mode-toggle").innerHTML = "Light Mode";
-            document.getElementById("dark-mode-toggle-mobile").innerHTML = "Light Mode";
+            
+            document.getElementById("dark-mode-toggle").src = "data/icons/sun.svg";
+            document.getElementById("dark-mode-toggle-mobile").src = "data/icons/sun.svg";
         }
         if (localStorage.getItem("dark-mode") == "light") {
             document.body.classList.remove("animated");
             document.body.classList.remove("dark");
             document.getElementById("nav-menu").classList.remove("dark");
-            document.getElementById("dark-mode-toggle").innerHTML = "Dark Mode";
-            document.getElementById("dark-mode-mobile").innerHTML = "Dark Mode";
+            
+            document.getElementById("dark-mode-toggle").src = "data/icons/moon.svg";
+            document.getElementById("dark-mode-toggle-mobile").src = "data/icons/moon.svg";
+            document.getElementById("nav-icon").src = "data/icons/menu-blk.svg";
         }
     </script>
 </html>

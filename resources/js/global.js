@@ -1,20 +1,24 @@
 function darkModeToggle() {
 
     if (localStorage.getItem("dark-mode") == "dark") {
-        document.body.classList.add("animated");
-        document.body.classList.remove("dark");
-        document.getElementById("nav-menu").classList.remove ("dark");
-        localStorage.setItem("dark-mode", "light");
-        document.getElementById("dark-mode-toggle").innerHTML = "Dark Mode";
-        document.getElementById("dark-mode-toggle-mobile").innerHTML = "Dark Mode";
+      document.body.classList.add("animated");
+      document.body.classList.remove("dark");
+      document.getElementById("nav-menu").classList.remove ("dark");
+      localStorage.setItem("dark-mode", "light");
+      
+      document.getElementById("dark-mode-toggle").src = "data/icons/moon.svg";
+      document.getElementById("dark-mode-toggle-mobile").src = "data/icons/moon.svg";
+      document.getElementById("nav-icon").src = "data/icons/menu-blk.svg";
     }
     else {
-        document.body.classList.add("animated");
-        document.body.classList.add("dark");
-        document.getElementById("nav-menu").classList.add("dark");
-        localStorage.setItem("dark-mode", "dark");
-        document.getElementById("dark-mode-toggle").innerHTML = "Light Mode";
-        document.getElementById("dark-mode-toggle-mobile").innerHTML = "Light Mode";
+      document.body.classList.add("animated");
+      document.body.classList.add("dark");
+      document.getElementById("nav-menu").classList.add("dark");
+      localStorage.setItem("dark-mode", "dark");
+      
+      document.getElementById("dark-mode-toggle").src = "data/icons/sun.svg";
+      document.getElementById("dark-mode-toggle-mobile").src = "data/icons/sun.svg";
+      document.getElementById("nav-icon").src = "data/icons/menu-wht.svg";
     }
   } 
 

@@ -90,6 +90,13 @@ span{
 	border-radius: 7%;
 }
 
+.work-exp-desc{
+	display: inline-block;
+	margin-left: 5px;
+	vertical-align: middle;
+	word-wrap: break-word;
+}
+
 .nav-mobile{
 	display: none;
 }
