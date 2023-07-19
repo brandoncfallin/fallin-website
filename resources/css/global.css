@@ -133,19 +133,19 @@ span{
 }
 
 .digital{
-	background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2)),url("https://raw.githubusercontent.com/brandoncfallin/website-images/main/digital/digital-5.jpg?token=GHSAT0AAAAAAB5FHWU7L7T4V4BLIPNKMB2AZFYEIMQ");
+	background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2)),url("https://brandoncfallin.github.io/website-images/digital/digital-5.jpg");
     background-size:cover;
 	background-position: center;
 }
 
 .analog{
-	background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2)),url("https://raw.githubusercontent.com/brandoncfallin/website-images/main/analog/analog-8.jpg?token=GHSAT0AAAAAAB5FHWU7APG4IYQ4LCZOWE6IZFYENTQ");
+	background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2)),url("https://brandoncfallin.github.io/website-images/analog/analog-8.jpg");
     background-size:cover;
 	background-position: center;
 }
 
 .grad{
-	background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2)),url("https://raw.githubusercontent.com/brandoncfallin/website-images/main/grad/grad-10.jpg?token=GHSAT0AAAAAAB5FHWU72CFSJ4ERBSNY4HUWZFYEO5Q");
+	background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2)),url("https://brandoncfallin.github.io/website-images/grad/grad-10.jpg");
 	background-size: 100%;
 	background-position: center;
 }
