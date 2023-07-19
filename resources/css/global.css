@@ -223,6 +223,14 @@ span{
 		max-width: 100%;
 		padding: 1px;
 	}
+
+	.card{
+		max-height: 15vh;
+	}
+
+	.cards{
+		height: 60vh;
+	}
 }
 
 #dark-mode-toggle{
