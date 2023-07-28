@@ -12,6 +12,7 @@
 
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="resources/css/global.css">
+        <link rel="stylesheet" type="text/css" href="resources/css/photos.css">
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>🚀</text></svg>">
     </head>
 
@@ -21,7 +22,7 @@
             <a href="reading">Reading</a>
             <a href="photos">Photos</a>
             <a href="data/pdf/fallin-resume.pdf" target="_blank">Resume</a>
-            <img id="dark-mode-toggle" src="/data/icons/moon.svg" onclick="darkModeToggle()" class="nav-bar" style="float:right;">
+            <img id="dark-mode-toggle" src="/data/icons/moon.svg" onclick="darkModeToggle()" class="nav-bar">
         </nav>
         <nav class="nav-mobile">
             <img id="nav-icon" src="data/icons/menu-blk.svg" onclick="mobileDrop()" class="nav-button">
@@ -31,36 +32,27 @@
                 <a href="photos">Photos</a>
                 <a href="data/pdf/fallin-resume.pdf" target="_blank">Resume</a>
             </div>
-            
-            <img id="dark-mode-toggle-mobile" onclick="darkModeToggle()" src="data/icons/moon.svg" class="nav-mobile" style="float:right;">
+            <img id="dark-mode-toggle-mobile" onclick="darkModeToggle()" src="data/icons/moon.svg" class="nav-mobile">
         </nav>
 
         <div class="cards">
             <div class="card digital" onclick="location.href='digital';">
                 <div class="card-title">
-                    Digital
+                    digital
                 </div>
             </div>
             <div class="card analog" onclick="location.href='analog';">
                 <div class="card-title" href="analog">
-                    Analog
+                    analog
                 </div>
             </div>
             <div class="card grad" onclick="location.href='grad';">
                 <div class="card-title">
-                    Grad
+                    grad
                 </div>
             </div>
         </div>
-
-        <footer>
-            <p style="margin-bottom:2px;">Connect with me:</p>
-            <div style="margin-bottom:25px;">
-                <a href="https://linkedin.com/in/brandonfallin" target="_blank">LinkedIn</a>
-                <a href="https://github.com/brandoncfallin" target="_blank">GitHub</a>
-                <a href="mailto:brandonfallin@gmail.com" target="_blank">Email</a>
-            </div>
-        </footer>
+        
         <script type="text/javascript" src="resources/js/global.js"></script>
     </body>
 </html>

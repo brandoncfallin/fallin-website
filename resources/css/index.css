@@ -1,0 +1,88 @@
+/* PROFILE IMAGE */
+.profile-image{
+	height: auto;
+	border-radius: 50%;
+	display: flex;
+}
+
+/* WORK EXPERIENCE */
+.work-item{
+	display: flex;
+	justify-content: left;
+	align-items: center;
+}
+
+.work-exp-image{
+	vertical-align: middle;
+	transition: transform .2s;
+}
+	.work-exp-image:hover{
+		transform: scale(1.05);
+		cursor: pointer;
+	}
+
+.work-exp-desc{
+	vertical-align: middle;
+}
+
+.work-exp-link{
+	color: #ffffff;
+}
+
+.work-exp-link:hover{
+	color: #ffffff;
+}
+
+.dark .work-exp-link{
+	color: #222;
+}
+
+.dark .work-exp-link:hover{
+	color: #222;
+}
+
+/* MOBILE */
+@media (min-width: 0px){
+	/* PROFILE IMAGE */
+	.profile-image{
+		width: 40%;
+		margin-top: 10%;
+	}
+
+	/* WORK EXPERIENCE */
+	.work-item{
+		margin-bottom: -1.5em;
+	}
+
+	.work-exp-image{
+		width: 3em;
+		border-radius: 7%;
+	}
+
+	.work-exp-listing{
+		margin-left: 0.6em;
+	}
+}
+
+/* TABLET */
+@media (min-width: 479px){
+	/* PROFILE IMAGE */
+	.profile-image{
+		width: 25%;
+		margin-top: 7%;
+	}
+}
+
+/* LAPTOP */
+@media (min-width: 767px){
+	/* PROFILE IMAGE */
+	.profile-image{
+		margin-top: 5%;
+	}
+
+}
+
+/* DESKTOP */
+@media (min-width: 1023px){
+
+}
