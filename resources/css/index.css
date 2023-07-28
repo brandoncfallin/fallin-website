@@ -25,6 +25,13 @@
 	vertical-align: middle;
 }
 
+span{
+	background-color: #e0e0e0;
+}
+	.dark span{
+		background-color: #757575;
+	}
+
 .work-exp-link{
 	color: #ffffff;
 }
