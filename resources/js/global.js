@@ -84,3 +84,29 @@ if (localStorage.getItem("dark-mode") == "light") {
   document.getElementById("dark-mode-toggle-mobile").src = "data/icons/moon.svg";
   document.getElementById("nav-icon").src = "data/icons/menu-blk.svg";
 }
+
+// Open the Modal
+function openModal() {
+  document.getElementById("myModal").style.display = "flex";
+}
+
+// Close the Modal
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[slideIndex-1].style.display = "flex";
+}
