@@ -88,11 +88,13 @@ if (localStorage.getItem("dark-mode") == "light") {
 // Open the Modal
 function openModal() {
   document.getElementById("myModal").style.display = "flex";
+  document.body.style.overflow = "hidden";
 }
 
 // Close the Modal
 function closeModal() {
   document.getElementById("myModal").style.display = "none";
+  document.body.style.overflow = "auto";
 }
 
 // Thumbnail image controls
