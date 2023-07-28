@@ -57,6 +57,9 @@
 	vertical-align: middle;
 	width: 100%;
 }
+	.column img:hover{
+		cursor: pointer;
+	}
 
 .photos-back{
 	font-family: Georgia, 'Times New Roman', Times, serif;
