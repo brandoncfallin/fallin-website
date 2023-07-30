@@ -20,7 +20,7 @@
         <span class="close" onclick="closeModal()">&times;</span>
         <div class="modal-content">
             <div class="mySlides">
-                <img src="https://brandoncfallin.github.io/website-images/analog/analog-13.jpg" class="modal-image-vertical" onclick="pinchZoom()">
+                <img src="https://brandoncfallin.github.io/website-images/analog/analog-13.jpg" class="modal-image-vertical" onclick="pinchZoom()" id="pz-1">
             </div>
             <div class="mySlides">
                 <img src="https://brandoncfallin.github.io/website-images/analog/analog-14.jpg" class="modal-image-horizontal">
@@ -110,7 +110,7 @@
         <script type="text/javascript" src="resources/pinchzoom/src/pinch-zoom.js"></script>
 
         <script type="text/javascript">
-            var el = document.querySelectorAll('.mySlides');
+            var el = document.getElementById('pz-1');
             new PinchZoom.default(el, {});
         </script>
     </body>
