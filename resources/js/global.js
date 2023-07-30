@@ -97,6 +97,13 @@ function closeModal() {
   enableScroll();
 }
 
+document.onkeydown = function(evt) {
+  evt = evt || window.event;
+  if (evt.keyCode == 27 && document.getElementById("myModal").style.display == "flex") {
+      closeModal();
+  }
+}
+
 // Thumbnail image controls
 function currentSlide(n) {
   showSlides(slideIndex = n);
