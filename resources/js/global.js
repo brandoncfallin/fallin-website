@@ -88,13 +88,13 @@ if (localStorage.getItem("dark-mode") == "light") {
 // Open the Modal
 function openModal() {
   document.getElementById("myModal").style.display = "flex";
-  // disableScroll();
+  disableScroll();
 }
 
 // Close the Modal
 function closeModal() {
   document.getElementById("myModal").style.display = "none";
-  // enableScroll();
+  enableScroll();
 }
 
 // Thumbnail image controls
