@@ -54,6 +54,15 @@ table td{
 		margin-left: -2px;
 		font-weight: normal;
 	}
+
+	.writing-title{
+		color: black;
+		text-decoration: none;
+	}
+
+	.writing-title:hover{
+		text-decoration: underline;
+	}
 }
 
 /* LAPTOP */
