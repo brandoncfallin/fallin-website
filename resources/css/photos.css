@@ -26,19 +26,19 @@
 }
 
 .digital{
-	background: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2)),url("https://brandoncfallin.github.io/website-images/digital/digital-5.jpg");
+	background: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2)),url("https://brandoncfallin.github.io/website-images/covers/digital.webp");
     background-size:cover;
 	background-position: center;
 }
 
 .analog{
-	background: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2)),url("https://brandoncfallin.github.io/website-images/analog/analog-8.jpg");
+	background: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2)),url("https://brandoncfallin.github.io/website-images/covers/analog.webp");
     background-size:cover;
 	background-position: center;
 }
 
 .grad{
-	background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2)),url("https://brandoncfallin.github.io/website-images/grad/grad-10.jpg");
+	background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2)),url("https://brandoncfallin.github.io/website-images/covers/grad.webp");
 	background-size: 100%;
 	background-position: center;
 }
