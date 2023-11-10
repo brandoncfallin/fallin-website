@@ -1,166 +1,171 @@
-<html>
-    <head> 
-        <!-- Basic info -->
-        <title>Reading - Brandon Fallin</title>
-        <meta charset="UTF-8">
-        <meta name="description" content="Brandon Fallin's recent reading."">
-        <meta name="keywords" content="aerospace,engineering,controls,differential,privacy,reading">
-        <meta name="author" content="Brandon Fallin">
+<!DOCTYPE html>
+<html lang="en">
 
-        <!-- For mobile devices -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <!-- Basic info -->
+    <title>Reading - Brandon Fallin</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Brandon Fallin's recent reading.">
+    <meta name="keywords" content="aerospace,engineering,controls,differential,privacy,reading">
+    <meta name="author" content="Brandon Fallin">
 
-        <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="resources/css/global.css">
-        <link rel="stylesheet" type="text/css" href="resources/css/reading.css">
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>🚀</text></svg>">
-    </head>
+    <!-- For mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <body class="">
-        <nav class="nav-bar">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="resources/css/global.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/reading.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>🚀</text></svg>">
+</head>
+
+<body class="">
+    <nav class="nav-bar">
+        <a href="index">Home</a>
+        <a href="reading">Reading</a>
+        <a href="photos">Photos</a>
+        <a href="data/pdf/fallin-resume.pdf" target="_blank">Resume</a>
+        <img id="dark-mode-toggle" src="/data/icons/moon.svg" onclick="darkModeToggle()" class="nav-bar">
+    </nav>
+    <nav class="nav-mobile">
+        <img id="nav-icon" src="data/icons/menu-blk.svg" onclick="mobileDrop()" class="nav-button">
+        <div id="nav-menu" class="drop-content">
             <a href="index">Home</a>
             <a href="reading">Reading</a>
             <a href="photos">Photos</a>
             <a href="data/pdf/fallin-resume.pdf" target="_blank">Resume</a>
-            <img id="dark-mode-toggle" src="/data/icons/moon.svg" onclick="darkModeToggle()" class="nav-bar">
-        </nav>
-        <nav class="nav-mobile">
-            <img id="nav-icon" src="data/icons/menu-blk.svg" onclick="mobileDrop()" class="nav-button">
-            <div id="nav-menu" class="drop-content">
-                <a href="index">Home</a>
-                <a href="reading">Reading</a>
-                <a href="photos">Photos</a>
-                <a href="data/pdf/fallin-resume.pdf" target="_blank">Resume</a>
-            </div>
-            <img id="dark-mode-toggle-mobile" onclick="darkModeToggle()" src="data/icons/moon.svg" class="nav-mobile">
-        </nav>
-    
-        <h1 style="margin-bottom:0px">Reading</h1>
-        <p style="margin-bottom:0px">
-            Lately, I've been carrying my Kindle everywhere in an effort to reduce screen time and social media usage. Here's a list of the books I've been reading.
-        </p>
-        <h4 style="margin-bottom:0px;">2023</h4>
-        <table style="background-color:rgba(0, 0, 0, 0);">
-            <tbody>
-                <tr>
-                    <td class="titles">The Hobbit</td>
-                    <td>J.R.R. Tolkien</td>
-                    <td>10-07-2023</td>
-                    <td class="stars">★★★★</td>
-                </tr>
-                <tr>
-                    <td class="titles">The Great Gatsby</td>
-                    <td>F. Scott Fitzgerald</td>
-                    <td>09-13-2023</td>
-                    <td class="stars">★★★</td>
-                </tr>
-                <tr>
-                    <td class="titles">Cannery Row</td>
-                    <td>John Steinbeck</td>
-                    <td>08-31-2023</td>
-                    <td class="stars">★★★</td>
-                </tr>
-                <tr>
-                    <td class="titles">American Prometheus</td>
-                    <td>Kai Bird</td>
-                    <td>08-26-2023</td>
-                    <td class="stars">★★★★</td>
-                </tr>
-                <tr>
-                    <td class="titles">Hallucinations</td>
-                    <td>Oliver Sacks</td>
-                    <td>07-31-2023</td>
-                    <td class="stars">★★</td>
-                </tr>
+        </div>
+        <img id="dark-mode-toggle-mobile" onclick="darkModeToggle()" src="data/icons/moon.svg" class="nav-mobile">
+    </nav>
 
-                <tr>
-                    <td class="titles">The Alchemist</td>
-                    <td>Paulo Coelho</td>
-                    <td>07-06-2023</td>
-                    <td class="stars">★★★</td>
-                </tr>
+    <h1 style="margin-bottom:0px">Reading</h1>
+    <p style="margin-bottom:0px">
+        Lately, I've been carrying my Kindle everywhere in an effort to reduce screen time and social media usage.
+        Here's a list of the books I've been reading.
+    </p>
+    <h4 style="margin-bottom:0px;">2023</h4>
+    <table style="background-color:rgba(0, 0, 0, 0);">
+        <tbody>
+            <tr>
+                <td class="titles">The Hobbit</td>
+                <td>J.R.R. Tolkien</td>
+                <td>10-07-2023</td>
+                <td class="stars">★★★★</td>
+            </tr>
+            <tr>
+                <td class="titles">The Great Gatsby</td>
+                <td>F. Scott Fitzgerald</td>
+                <td>09-13-2023</td>
+                <td class="stars">★★★</td>
+            </tr>
+            <tr>
+                <td class="titles">Cannery Row</td>
+                <td>John Steinbeck</td>
+                <td>08-31-2023</td>
+                <td class="stars">★★★</td>
+            </tr>
+            <tr>
+                <td class="titles">American Prometheus</td>
+                <td>Kai Bird</td>
+                <td>08-26-2023</td>
+                <td class="stars">★★★★</td>
+            </tr>
+            <tr>
+                <td class="titles">Hallucinations</td>
+                <td>Oliver Sacks</td>
+                <td>07-31-2023</td>
+                <td class="stars">★★</td>
+            </tr>
 
-                <tr>
-                    <td class="titles">Children of Dune</td>
-                    <td>Frank Herbert</td>
-                    <td>06-26-2023</td>
-                    <td class="stars">★★★★</td>
-                </tr>
+            <tr>
+                <td class="titles">The Alchemist</td>
+                <td>Paulo Coelho</td>
+                <td>07-06-2023</td>
+                <td class="stars">★★★</td>
+            </tr>
 
-                <tr>
-                    <td class="titles">Dune Messiah</td>
-                    <td>Frank Herbert</td>
-                    <td>06-20-2023</td>
-                    <td class="stars">★★</td>
-                </tr>
-    
-                <tr>
-                    <td class="titles">East of Eden</td>
-                    <td>John Steinbeck</td>
-                    <td>06-16-2023</td>
-                    <td class="stars">★★★★★</td>
-                </tr>
-    
-                <tr>
-                    <td class="titles">Stolen Focus</td>
-                    <td>Johann Kari</td>
-                    <td>06-15-2023</td>
-                    <td class="stars">★★★</td>
-                </tr>
-    
-                <tr>
-                    <td class="titles">The Body</td>
-                    <td>Bill Bryson</td>
-                    <td>05-09-2023</td>
-                    <td class="stars">★★★</td>
-                </tr>
-                
-                <tr>
-                    <td class="titles">The Hidden Life of Trees</td>
-                    <td>Peter Wohlleben</td>
-                    <td>04-21-2023</td>
-                    <td class="stars">★★</td>
-                </tr>
-    
-                <tr>
-                    <td class="titles">A People's History of the United States</td>
-                    <td>Howard Zinn</td>
-                    <td>03-30-2023</td>
-                    <td class="stars">★★★★</td>
-                </tr>
-                
-                <tr>
-                    <td class="titles">Into the Wild</td>
-                    <td>Jon Krakauer</td>
-                    <td>02-24-2023</td>
-                    <td class="stars">★★★★</td>
-                </tr>
-    
-                <tr>
-                    <td class="titles">Dune</td>
-                    <td>Frank Herbert</td>
-                    <td>02-12-2023</td>
-                    <td class="stars">★★★★★</td>
-                </tr>
-                
-                <tr>
-                    <td class="titles">1491: New Revelations of the Americas Before Columbus</td>
-                    <td>Charles C. Mann</td>
-                    <td>02-05-2023</td>
-                    <td class="stars">★★★</td>
-                </tr>
-            </tbody>
-          </table> 
-        
-    
-        <footer>
-            <p class="footer-tag">Connect with me:</p>
-            <div class="footer-links">
-                <a href="https://linkedin.com/in/brandonfallin" target="_blank">LinkedIn</a>
-                <a href="https://github.com/brandoncfallin" target="_blank">GitHub</a>
-                <a href="mailto:brandonfallin@gmail.com" target="_blank">Email</a>
-            </div>
-        </footer>
-        <script type="text/javascript" src="resources/js/global.js"></script>
-    </body>
+            <tr>
+                <td class="titles">Children of Dune</td>
+                <td>Frank Herbert</td>
+                <td>06-26-2023</td>
+                <td class="stars">★★★★</td>
+            </tr>
+
+            <tr>
+                <td class="titles">Dune Messiah</td>
+                <td>Frank Herbert</td>
+                <td>06-20-2023</td>
+                <td class="stars">★★</td>
+            </tr>
+
+            <tr>
+                <td class="titles">East of Eden</td>
+                <td>John Steinbeck</td>
+                <td>06-16-2023</td>
+                <td class="stars">★★★★★</td>
+            </tr>
+
+            <tr>
+                <td class="titles">Stolen Focus</td>
+                <td>Johann Kari</td>
+                <td>06-15-2023</td>
+                <td class="stars">★★★</td>
+            </tr>
+
+            <tr>
+                <td class="titles">The Body</td>
+                <td>Bill Bryson</td>
+                <td>05-09-2023</td>
+                <td class="stars">★★★</td>
+            </tr>
+
+            <tr>
+                <td class="titles">The Hidden Life of Trees</td>
+                <td>Peter Wohlleben</td>
+                <td>04-21-2023</td>
+                <td class="stars">★★</td>
+            </tr>
+
+            <tr>
+                <td class="titles">A People's History of the United States</td>
+                <td>Howard Zinn</td>
+                <td>03-30-2023</td>
+                <td class="stars">★★★★</td>
+            </tr>
+
+            <tr>
+                <td class="titles">Into the Wild</td>
+                <td>Jon Krakauer</td>
+                <td>02-24-2023</td>
+                <td class="stars">★★★★</td>
+            </tr>
+
+            <tr>
+                <td class="titles">Dune</td>
+                <td>Frank Herbert</td>
+                <td>02-12-2023</td>
+                <td class="stars">★★★★★</td>
+            </tr>
+
+            <tr>
+                <td class="titles">1491: New Revelations of the Americas Before Columbus</td>
+                <td>Charles C. Mann</td>
+                <td>02-05-2023</td>
+                <td class="stars">★★★</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <footer>
+        <p class="footer-tag">Connect with me:</p>
+        <div class="footer-links">
+            <a href="https://linkedin.com/in/brandonfallin" target="_blank">LinkedIn</a>
+            <a href="https://github.com/brandoncfallin" target="_blank">GitHub</a>
+            <a href="mailto:brandonfallin@gmail.com" target="_blank">Email</a>
+        </div>
+    </footer>
+    <script type="text/javascript" src="resources/js/global.js"></script>
+</body>
+
 </html>
