@@ -1,13 +1,15 @@
-// Checks local storage for dark mode preference
-var darkMode;
-if (localStorage.getItem("dark-mode")) {
-  darkMode = localStorage.getItem("dark-mode");
-} 
-else {
-  darkMode = "light";
+// Check user dark mode preference
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  localStorage.setItem("dark-mode", "dark");
 }
 
-localStorage.setItem("dark-mode", darkMode);
+// Checks local storage for dark mode preference
+if (localStorage.getItem("dark-mode")) {
+  
+} 
+else {
+  localStorage.setItem("dark-mode", "light");
+}
 
 if (localStorage.getItem("dark-mode") == "dark") {
   document.getElementById("nav-icon").src = "data/icons/menu-wht.svg";
