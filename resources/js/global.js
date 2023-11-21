@@ -1,26 +1,35 @@
 // Toggles dark mode on click 
 function darkModeToggle() {
   if (localStorage.getItem("dark-mode") == "dark") {
-    document.body.classList.add("animated");
-    document.body.classList.remove("dark");
-    document.getElementById("nav-menu").classList.remove ("dark");
+    makeLight();
     localStorage.setItem("dark-mode", "light");
-    
-    document.getElementById("dark-mode-toggle").src = "data/icons/moon.svg";
-    document.getElementById("dark-mode-toggle-mobile").src = "data/icons/moon.svg";
-    document.getElementById("nav-icon").src = "data/icons/menu-blk.svg";
   }
   else {
-    document.body.classList.add("animated");
-    document.body.classList.add("dark");
-    document.getElementById("nav-menu").classList.add("dark");
+    makeDark();
     localStorage.setItem("dark-mode", "dark");
-    
-    document.getElementById("dark-mode-toggle").src = "data/icons/sun.svg";
-    document.getElementById("dark-mode-toggle-mobile").src = "data/icons/sun.svg";
-    document.getElementById("nav-icon").src = "data/icons/menu-wht.svg";
   }
 } 
+
+function makeDark() {
+  document.getElementById("nav-icon").src = "data/icons/menu-wht.svg";
+  
+  document.body.classList.remove("animated");
+  document.body.classList.add("dark");
+  document.getElementById("nav-menu").classList.add("dark");
+  
+  document.getElementById("dark-mode-toggle").src = "data/icons/sun.svg";
+  document.getElementById("dark-mode-toggle-mobile").src = "data/icons/sun.svg";
+}
+
+function makeLight() {
+  document.body.classList.remove("animated");
+  document.body.classList.remove("dark");
+  document.getElementById("nav-menu").classList.remove("dark");
+
+  document.getElementById("dark-mode-toggle").src = "data/icons/moon.svg";
+  document.getElementById("dark-mode-toggle-mobile").src = "data/icons/moon.svg";
+  document.getElementById("nav-icon").src = "data/icons/menu-blk.svg";
+}
 
 // Toggles mobile menu on click
 function mobileDrop() {
@@ -41,17 +50,10 @@ window.onclick = function(event) {
   }
 } 
 
-// // Checks user theme preference
-// if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-//   document.getElementById("nav-icon").src = "data/icons/menu-wht.svg";
-          
-//   document.body.classList.remove("animated");
-//   document.body.classList.add("dark");
-//   document.getElementById("nav-menu").classList.add("dark");
-  
-//   document.getElementById("dark-mode-toggle").src = "data/icons/sun.svg";
-//   document.getElementById("dark-mode-toggle-mobile").src = "data/icons/sun.svg";
-// }
+// Checks user theme preference
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  makeDark();
+}
 
 // Open the Modal
 function openModal() {
