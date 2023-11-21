@@ -41,6 +41,18 @@ window.onclick = function(event) {
   }
 } 
 
+// Checks user theme preference
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  document.getElementById("nav-icon").src = "data/icons/menu-wht.svg";
+          
+  document.body.classList.remove("animated");
+  document.body.classList.add("dark");
+  document.getElementById("nav-menu").classList.add("dark");
+  
+  document.getElementById("dark-mode-toggle").src = "data/icons/sun.svg";
+  document.getElementById("dark-mode-toggle-mobile").src = "data/icons/sun.svg";
+}
+
 // Open the Modal
 function openModal() {
   document.getElementById("myModal").style.display = "flex";
