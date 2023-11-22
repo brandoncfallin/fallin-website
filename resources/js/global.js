@@ -1,5 +1,5 @@
 // Get user dark mode preference
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && sessionStorage.getItem("delta") == null) {
   sessionStorage.setItem("dark-mode", "dark");
   makeDark();
 }
@@ -11,12 +11,14 @@ function darkModeToggle() {
     makeLight();
     document.body.classList.remove("animated");
     sessionStorage.setItem("dark-mode", "light");
+    sessionStorage.setItem("delta", "true")
   }
   else {
     document.body.classList.add("animated");
     makeDark();
     document.body.classList.remove("animated");
     sessionStorage.setItem("dark-mode", "dark");
+    sessionStorage.setItem("delta", "true")
   }
 } 
 
