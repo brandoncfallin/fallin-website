@@ -1,12 +1,12 @@
 // Toggles dark mode on click 
 function darkModeToggle() {
-  if (localStorage.getItem("dark-mode") == "dark") {
+  if (sessionStorage.getItem("dark-mode") == "dark") {
     makeLight();
-    localStorage.setItem("dark-mode", "light");
+    sessionStorage.setItem("dark-mode", "light");
   }
   else {
     makeDark();
-    localStorage.setItem("dark-mode", "dark");
+    sessionStorage.setItem("dark-mode", "dark");
   }
 } 
 

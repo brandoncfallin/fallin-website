@@ -1,4 +1,4 @@
-if (localStorage.getItem("dark-mode") == "dark") {
+if (sessionStorage.getItem("dark-mode") == "dark") {
   makeDark();
 }
 else {
