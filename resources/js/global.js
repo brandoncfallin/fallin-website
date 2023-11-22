@@ -1,3 +1,9 @@
+// Get user dark mode preference
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  sessionStorage.setItem("dark-mode", "dark");
+  makeDark();
+}
+
 // Toggles dark mode on click 
 function darkModeToggle() {
   if (sessionStorage.getItem("dark-mode") == "dark") {
