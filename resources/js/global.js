@@ -1,19 +1,21 @@
 // Toggles dark mode on click 
 function darkModeToggle() {
   if (sessionStorage.getItem("dark-mode") == "dark") {
+    document.body.classList.add("animated");
     makeLight();
+    document.body.classList.remove("animated");
     sessionStorage.setItem("dark-mode", "light");
   }
   else {
+    document.body.classList.add("animated");
     makeDark();
+    document.body.classList.remove("animated");
     sessionStorage.setItem("dark-mode", "dark");
   }
 } 
 
 function makeDark() {
   document.getElementById("nav-icon").src = "data/icons/menu-wht.svg";
-  
-  document.body.classList.remove("animated");
   document.body.classList.add("dark");
   document.getElementById("nav-menu").classList.add("dark");
   
@@ -22,7 +24,6 @@ function makeDark() {
 }
 
 function makeLight() {
-  document.body.classList.remove("animated");
   document.body.classList.remove("dark");
   document.getElementById("nav-menu").classList.remove("dark");
 
