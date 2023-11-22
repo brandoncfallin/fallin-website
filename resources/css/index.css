@@ -3,6 +3,7 @@
 	height: auto;
 	border-radius: 50%;
 	display: flex;
+	background-image:url(data/img/no-image.svg);
 }
 
 /* WORK EXPERIENCE */
@@ -77,7 +78,6 @@ span{
 	.profile-image{
 		width: 25%;
 		margin-top: 7%;
-		background-image:url(data/img/no-image.svg);
 	}
 }
 
