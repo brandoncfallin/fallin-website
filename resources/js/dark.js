@@ -7,4 +7,5 @@ document.addEventListener("DOMContentLoaded",() => {
   else {
     makeLight();
   }
+  document.documentElement.classList.remove("hidden");
 });
