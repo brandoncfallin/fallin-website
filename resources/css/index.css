@@ -3,7 +3,6 @@
 	height: auto;
 	border-radius: 50%;
 	display: flex;
-	background-image:url(data/img/no-image.svg);
 }
 
 /* WORK EXPERIENCE */
@@ -57,6 +56,10 @@ span{
 		margin-top: 10%;
 	}
 
+	.profile-container{
+		height: 40%;
+	}
+
 	/* WORK EXPERIENCE */
 	.work-item{
 		margin-bottom: -1.5em;
@@ -79,6 +82,10 @@ span{
 		width: 25%;
 		margin-top: 7%;
 	}
+
+	.profile-container{
+		height: 25%;
+	}
 }
 
 /* LAPTOP */
@@ -87,7 +94,6 @@ span{
 	.profile-image{
 		margin-top: 5%;
 	}
-
 }
 
 /* DESKTOP */
