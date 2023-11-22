@@ -25,7 +25,7 @@ function darkModeToggle() {
 // Toggles dark mode
 function makeDark() {
   document.getElementById("nav-icon").src = "../data/icons/menu-wht.svg";
-  document.body.classList.add("dark");
+  document.documentElement.classList.add("dark");
   document.getElementById("nav-menu").classList.add("dark");
   
   document.getElementById("dark-mode-toggle").src = "../data/icons/sun.svg";
@@ -34,7 +34,7 @@ function makeDark() {
 
 // Toggles light mode
 function makeLight() {
-  document.body.classList.remove("dark");
+  document.documentElement.classList.remove("dark");
   document.getElementById("nav-menu").classList.remove("dark");
 
   document.getElementById("dark-mode-toggle").src = "../data/icons/moon.svg";
