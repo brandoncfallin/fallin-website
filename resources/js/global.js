@@ -1,4 +1,4 @@
-// Get user dark mode preference
+// Get user dark mode preference, make sure dark mode has not been toggled by user
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && sessionStorage.getItem("delta") == null) {
   sessionStorage.setItem("dark-mode", "dark");
   makeDark();
@@ -22,6 +22,7 @@ function darkModeToggle() {
   }
 } 
 
+// Toggles dark mode
 function makeDark() {
   document.getElementById("nav-icon").src = "data/icons/menu-wht.svg";
   document.body.classList.add("dark");
@@ -31,6 +32,7 @@ function makeDark() {
   document.getElementById("dark-mode-toggle-mobile").src = "data/icons/sun.svg";
 }
 
+// Toggles light mode
 function makeLight() {
   document.body.classList.remove("dark");
   document.getElementById("nav-menu").classList.remove("dark");
