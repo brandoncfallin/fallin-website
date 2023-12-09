@@ -9,6 +9,14 @@ table td{
 	word-wrap: break-word;
 }
 
+dialog{
+	font-family: Arial, sans-serif;
+	margin: auto;
+	padding:1em;
+	max-width: 650px;
+	text-align: left;
+}
+
 /* MOBILE */
 @media (min-width: 0px){
 	table{
@@ -30,6 +38,18 @@ table td{
 	.titles{
 		padding: 0px 0px;
 		font-weight: bold;
+	}
+
+	.titles-clip{
+		text-decoration: underline;
+	}
+	
+	.titles-clip:hover{
+		cursor: pointer;
+	}
+
+	.clippings{
+		font-style: italic;
 	}
 }
 

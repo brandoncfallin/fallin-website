@@ -26,6 +26,9 @@ function darkModeToggle() {
 function makeDark() {
   document.getElementById("nav-icon").src = "../data/icons/menu-wht.svg";
   document.documentElement.classList.add("dark");
+  document.querySelectorAll("dialog").forEach(item => {
+    item.classList.add("dark");
+  })
   document.getElementById("nav-menu").classList.add("dark");
   
   document.getElementById("dark-mode-toggle").src = "../data/icons/sun.svg";
@@ -36,7 +39,9 @@ function makeDark() {
 function makeLight() {
   document.documentElement.classList.remove("dark");
   document.getElementById("nav-menu").classList.remove("dark");
-
+  document.querySelectorAll("dialog").forEach(item => {
+    item.classList.remove("dark");
+  })
   document.getElementById("dark-mode-toggle").src = "../data/icons/moon.svg";
   document.getElementById("dark-mode-toggle-mobile").src = "../data/icons/moon.svg";
   document.getElementById("nav-icon").src = "../data/icons/menu-blk.svg";

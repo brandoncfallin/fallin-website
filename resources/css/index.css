@@ -5,6 +5,11 @@
 	display: flex;
 }
 
+.profile-container{
+	position: relative;
+	padding-bottom: 100%;
+}
+
 /* WORK EXPERIENCE */
 .work-item{
 	display: flex;
@@ -54,11 +59,6 @@ span{
 	.profile-image{
 		width: 40%;
 		margin-top: 10%;
-	}
-
-	.profile-container{
-		position: relative;
-		padding-bottom: 100%;
 	}
 
 	/* WORK EXPERIENCE */
