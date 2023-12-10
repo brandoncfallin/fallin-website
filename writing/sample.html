@@ -14,11 +14,16 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="../resources/css/global.css">
-    <link rel="stylesheet" type="text/css" href="../resources/css/reading.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/writing.css">
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>🚀</text></svg>">
 
+    <!-- Dark Mode -->
     <script type="text/javascript" src="../resources/js/dark.js"></script>
+
+    <!-- MathJaX -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body class="">
@@ -42,11 +47,23 @@
 
     <h1 style="margin-bottom:0px">Empty Blog Post</h1>
     <p style="margin-bottom:0px">
-        &emsp; I haven't been posting on the internet much lately. I'd like to try and get back into it. I'm going to
+        I haven't been posting on the internet much lately. I'd like to try and get back into it. I'm going to
         post thoughts and images I find interesting here. I would like to write a lot more on this blog. I hope it goes
         well. Here is what a sample paragraph looks like. I will build out more formatting for the image elements and
         embedded content later.
     </p>
+    <p>Inline math: \( (\epsilon,\delta) \)-differential privacy.</p>
+    <p>Equations:
+        \[ x=\pm \frac{a}{b}. \]
+    </p>
+    <h2>Section Separation</h2>
+    <p>Images with captions.</p>
+    <div class="image-container"><img
+            src="https://brandoncfallin.github.io/website-images/digital/small/digital-14.webp" fetchpriority="high"
+            class="blog-image med"></div>
+    <div class="img-caption">
+        <p><i>Figure 1:</i> Sample image on a blog post.</p>
+    </div>
 
     <script type="text/javascript" src="../resources/js/global.js"></script>
 </body>

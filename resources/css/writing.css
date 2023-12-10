@@ -1,4 +1,4 @@
-/* READING ENTRIES TABLE */
+/* TABLE */
 table{
 	text-align: left;
 }
@@ -7,6 +7,37 @@ table td{
 	text-align: left;
 	vertical-align: top;
 	word-wrap: break-word;
+}
+
+.image-container{
+	max-width: 650px;
+	margin: 0 auto;
+	display: grid;
+	display: grid;
+	justify-items: center;
+}
+
+.blog-image{
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	flex-direction: column;
+}
+	.large{
+		width: 75%;
+	}
+	.med{
+		width: 65%;
+	}
+	.small{
+		width: 50%;
+	}
+
+.img-caption{
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	flex-direction: column;	
 }
 
 /* MOBILE */
@@ -20,17 +51,6 @@ table td{
 			margin-left:-2px;
 			max-width: 500px;
 		}
-
-	.stars{
-		padding: 0px 0px;
-		margin-top: -2px;
-		margin-bottom: 10px;
-	}
-
-	.titles{
-		padding: 0px 0px;
-		font-weight: bold;
-	}
 }
 
 /* TABLET */
@@ -43,16 +63,6 @@ table td{
 
 	table th{
 		text-align: left;
-	}
-
-	.stars{
-		padding:0px 5px;
-	}
-	
-	.titles{
-		padding:5px 0px;
-		margin-left: -2px;
-		font-weight: normal;
 	}
 
 	.writing-title{
