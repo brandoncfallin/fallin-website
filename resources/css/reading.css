@@ -13,9 +13,76 @@ dialog{
 	font-family: Arial, sans-serif;
 	margin: auto;
 	padding:1em;
-	max-width: 650px;
+	max-width: 65%;
+	max-height: 50%;
 	text-align: left;
 }
+
+button{
+	border: none;
+	background: none;
+	width: fit-content;
+}
+
+button:focus {
+	outline: none;
+}
+
+td a{
+	color: black;
+	font-weight: 1000;
+}
+	td a:hover{
+		color: #F2A900;
+	}
+	.dark td a{
+		color: #f9f9f9;
+	}
+		.dark td a:hover{
+			color: #22884C;
+		}
+
+.clippings-header{
+	display: flex;
+	width: 100%;
+	align-items: center;
+}
+
+.no-margin{
+	margin: 0px;
+   -webkit-margin-before: 0px;
+   -webkit-margin-after: 0px;
+}
+
+.clippings-title{
+	display: inline-block;
+}
+
+.button-holder{
+	float: right;
+	text-align: center;
+	display: block;
+}
+
+.close {
+	background-color: white;
+	color: #999;
+	font-size: 35px;
+	font-weight: 100;
+	margin-top: 0px;
+	margin-bottom: 6px;
+}
+	.close:hover, .close:focus {
+		color: #222;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	.dark .close{
+		background-color: #222;
+	}
+	.dark .close:hover, .dark .close:focus {
+		color: white;
+	}
 
 /* MOBILE */
 @media (min-width: 0px){
@@ -78,7 +145,9 @@ dialog{
 
 /* LAPTOP */
 @media (min-width: 767px){
-
+	dialog{
+		max-width: 422px;
+	}
 }
 
 /* DESKTOP */
