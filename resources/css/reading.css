@@ -133,12 +133,22 @@ td a{
 
 	.stars{
 		padding:0px 5px;
+		width: 15%;
 	}
 	
 	.titles{
 		padding:5px 0px;
 		margin-left: -2px;
 		font-weight: normal;
+		width: 35%;
+	}
+
+	.authors{
+		width: 30%;
+	}
+
+	.dates{
+		width: 20%;
 	}
 }
 
