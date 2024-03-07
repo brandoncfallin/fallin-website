@@ -50,7 +50,7 @@ td a{
 .no-margin{
 	margin-top: 0px;
    -webkit-margin-before: 0px;
-   -webkit-margin-after: 0px;
+   /* -webkit-margin-after: 0px; */
 }
 
 .clippings-title{
