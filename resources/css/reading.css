@@ -61,6 +61,7 @@ td a{
 	position: absolute;
 	top: 0;
 	right: 0;
+	--webkit-margin-end: 0px;
 }
 
 .close {
