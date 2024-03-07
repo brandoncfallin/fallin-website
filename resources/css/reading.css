@@ -43,12 +43,12 @@ td a{
 
 .clippings-header{
 	display: flex;
-	width: 100%;
+	max-width: 80%;
 	align-items: center;
 }
 
 .no-margin{
-	margin: 0px;
+	margin-top: 0px;
    -webkit-margin-before: 0px;
    -webkit-margin-after: 0px;
 }
@@ -58,9 +58,9 @@ td a{
 }
 
 .button-holder{
-	float: right;
-	text-align: center;
-	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
 .close {

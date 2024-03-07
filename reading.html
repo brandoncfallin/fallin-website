@@ -39,13 +39,26 @@
         </div>
         <img id="dark-mode-toggle-mobile" onclick="darkModeToggle()" src="data/icons/moon.svg" class="nav-mobile">
     </nav>
+    <dialog id="modal-mortals">
+        <form method="dialog">
+            <div class="button-holder">
+                <button type="submit" class="close" onclick="false">&times;</button>
+            </div>
+            <div class="clippings-header">
+                <h3 class="no-margin">Four Thousand Weeks: Time Management for Mortals</h3>
+            </div>
+            <h4 class="no-margin">Selected Clippings</h4>
+            <p class="clippings">"Time is a river that sweeps me along, but I am the river; it is a tiger which destroys
+                me, but I am the tiger; it is a fire which consumes me, but I am the fire."</p>
+        </form>
+    </dialog>
     <dialog id="modal-sirens">
         <form method="dialog">
+            <div class="button-holder">
+                <button type="submit" class="close" onclick="false">&times;</button>
+            </div>
             <div class="clippings-header">
-                <h3 class="clippings-header no-margin">The Sirens of Titan</h3>
-                <div class="button-holder">
-                    <button type="submit" class="close" onclick="false">&times;</button>
-                </div>
+                <h3 class="no-margin">The Sirens of Titan</h3>
             </div>
             <h4 class="no-margin">Selected Clippings</h4>
             <p class="clippings">"Unk, the big trouble with dumb bastards is that they are too dumb to believe there is
@@ -58,11 +71,11 @@
     </dialog>
     <dialog id="modal-anthro">
         <form method="dialog">
+            <div class="button-holder">
+                <button type="submit" class="close" onclick="false">&times;</button>
+            </div>
             <div class="clippings-header">
-                <h3 class="clippings-header no-margin">The Anthropocene Reviewed</h3>
-                <div class="button-holder">
-                    <button type="submit" class="close" onclick="false">&times;</button>
-                </div>
+                <h3 class="no-margin">The Anthropocene Reviewed</h3>
             </div>
             <h4 class="no-margin">Selected Clippings</h4>
             <p class="clippings">"But until then: What an astonishment to breathe on this breathing planet. What a
@@ -74,11 +87,11 @@
     </dialog>
     <dialog id="modal-hobbit">
         <form method="dialog">
+            <div class="button-holder">
+                <button type="submit" class="close" onclick="false">&times;</button>
+            </div>
             <div class="clippings-header">
-                <h3 class="clippings-header no-margin">The Hobbit</h3>
-                <div class="button-holder">
-                    <button type="submit" class="close" onclick="false">&times;</button>
-                </div>
+                <h3 class="no-margin">The Hobbit</h3>
             </div>
             <h4 class="no-margin">Selected Clippings</h4>
             <p class="clippings">“'I will answer the second question first,' he said, '—but bless me! this is a splendid
@@ -93,6 +106,16 @@
     <h4 style="margin-bottom:0px;">2024</h4>
     <table style="background-color:rgba(0, 0, 0, 0); width: 100%;">
         <tbody>
+            <tr>
+                <td class="titles">
+                    <a class="titles-clip" data-book-name="mortals">
+                        Four Thousand Weeks: Time Management for Mortals
+                    </a>
+                </td>
+                <td class="authors">Oliver Burkeman</td>
+                <td class="dates">03-06-2023</td>
+                <td class="stars">★★★★★</td>
+            </tr>
             <tr>
                 <td class="titles">The Wayfinders</td>
                 <td class="authors">Wade Davis</td>
