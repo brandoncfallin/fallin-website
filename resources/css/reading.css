@@ -53,6 +53,10 @@ td a{
    /* -webkit-margin-after: 0px; */
 }
 
+.no-bottom{
+	margin-bottom: 0px;
+}
+
 .clippings-title{
 	display: inline-block;
 }
