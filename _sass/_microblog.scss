@@ -1,0 +1,90 @@
+.microblog-feed {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.microblog-post {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.microblog-post header {
+  margin-bottom: 15px;
+}
+
+.microblog-post h2 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.microblog-post time {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.microblog-content {
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+/* Image containment */
+.microblog-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+}
+
+.microblog-content .blog-image.med {
+  max-width: 80%;
+}
+
+/* Caption styling */
+.microblog-content .img-caption {
+  text-align: center;
+  font-style: italic;
+  margin-top: 0.5em;
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Dark mode styles */
+.dark .microblog-post {
+  background-color: #2c2c2c;
+  border-color: #444;
+}
+
+.dark .microblog-post h2 {
+  color: #f0f0f0;
+}
+
+.dark .microblog-post time,
+.dark .microblog-content .img-caption {
+  color: #aaa;
+}
+
+mjx-container, mjx-math, .MathJax, .MathJax_SVG, .MathJax_Display {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: none !important;
+}
+
+/* Additional styles for better integration */
+.microblog-content {
+  overflow-x: auto;
+
+  p {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
+}

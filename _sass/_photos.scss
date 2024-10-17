@@ -1,0 +1,283 @@
+/* PHOTO CARDS */
+.cards {
+  max-width: 650px;
+  margin: 0 auto;
+  display: grid;
+  justify-items: center;
+}
+
+.card {
+  color: white;
+  transition: transform .2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+}
+
+.card-title {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-variant: small-caps;
+  position: relative;
+  z-index: 2;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2));
+  z-index: 2;
+}
+
+
+/* PHOTO GALLERY */
+.photo-gallery {
+  max-width: 100%;
+  padding: 10px 0; /* Reduced padding top and bottom, no side padding */
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -2px; /* Negative margin to counteract column padding */
+}
+
+.column {
+  flex: 33.33%;
+  max-width: 33.33%;
+  padding: 0 2px;
+}
+
+.column img {
+  margin-top: 4px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Adjust for mobile view */
+@media (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Ensure images fill their containers */
+.column img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* Adjust the back to photos link */
+.photos-back {
+  padding: 10px 0;
+  text-align: center;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dark .modal {
+  background-color: #222;
+}
+
+/* MODAL CONTENT */
+.modal-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.mySlides {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.close {
+  background-color: white;
+  color: #999;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: 100;
+
+  &:hover, &:focus {
+    color: #222;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.dark .close {
+  background-color: #222;
+
+  &:hover, &:focus {
+    color: white;
+  }
+}
+
+/* MOBILE */
+@media (min-width: 0px) {
+  /* PHOTO CARDS */
+  .cards {
+    gap: 1rem;
+    padding: 40px 18px 40px 18px;
+    height: 22.5em;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .card {
+    padding: 1rem;
+    max-height: 6em;
+    width: 70%;
+    border-radius: 10px;
+  }
+
+  .card-title {
+    font-size: 1.3em;
+    letter-spacing: 0.3em;
+    font-weight: 100;
+  }
+
+  /* PHOTO GALLERY */
+  .column {
+    flex: 100%;
+    max-width: 100%;
+    padding: 1px;
+  }
+
+  .photos-back {
+    padding-top: 40px;
+
+    a {
+      padding-bottom: 20px;
+    }
+  }
+
+  /* MODAL CONTENT */
+  .modal-image-vertical {
+    max-height: 65vh;
+    max-width: 90vw;
+  }
+
+  .modal-image-horizontal {
+    max-width: 90vw;
+  }
+
+  .modal-image-square {
+    width: 70vw;
+    height: 70vw;
+  }
+}
+
+/* TABLET */
+@media (min-width: 479px) {
+  /* PHOTO CARDS */
+  .cards {
+    height: 30em;
+  }
+
+  .card {
+    max-height: 10em;
+  }
+
+  /* PHOTO GALLERY */
+  .column {
+    flex: 30%;
+    padding: 4px;
+  }
+
+  /* MODAL CONTENT */
+  .modal-image-vertical {
+    max-height: 95vh;
+  }
+
+  .modal-image-horizontal {
+    max-width: 90vw;
+  }
+
+  .modal-image-square {
+    width: 70vw;
+    height: 70vw;
+  }
+}
+
+/* LAPTOP */
+@media (min-width: 767px) {
+  // Add any laptop-specific styles here
+}
+
+/* DESKTOP */
+@media (min-width: 1023px) {
+  /* PHOTO CARDS */
+  .cards {
+    height: 30em;
+  }
+
+  .card {
+    max-height: 12em;
+  }
+
+  /* MODAL CONTENT */
+  .modal-image-vertical {
+    max-height: 90vh;
+  }
+
+  .modal-image-horizontal {
+    max-width: 50vw;
+  }
+
+  .modal-image-square {
+    height: 85vh;
+    width: 85vh;
+  }
+}

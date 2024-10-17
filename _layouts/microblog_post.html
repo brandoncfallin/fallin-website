@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<article class="microblog-post">
+  <header>
+    <h2>{{ page.subject }}</h2>
+    <time datetime="{{ page.date | date_to_xmlschema }}">
+      {{ page.date | date: "%B %d, %Y at %I:%M %p" }}
+    </time>
+  </header>
+  <div class="microblog-content">
+    {{ content }}
+  </div>
+</article>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photos - Brandon Fallin</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>🚀</text></svg>">
+    <script src="/assets/js/dark.js"></script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_SVG">
+        </script>
+</head>
+
+
+<body>
+    <header>
+        <nav class="nav-bar">
+    <a href="/">Home</a>
+    <a href="/reading">Reading</a>
+    <a href="/photos">Photos</a>
+    <a href="/posts">Posts</a>
+    <a href="/assets/pdf/fallin-resume.pdf" target="_blank">Resume</a>
+    <img id="dark-mode-toggle" src="/assets/images/icons/moon.svg" onclick="darkModeToggle()"
+        class="nav-bar">
+</nav>
+<nav class="nav-mobile">
+    <img id="nav-icon" src="/assets/images/icons/menu-blk.svg" onclick="mobileDrop()"
+        class="nav-button">
+    <div id="nav-menu" class="drop-content">
+        <a href="/">Home</a>
+        <a href="/reading">Reading</a>
+        <a href="/photos">Photos</a>
+        <a href="/posts">Posts</a>
+        <a href="/assets/pdf/fallin-resume.pdf" target="_blank">Resume</a>
+    </div>
+    <img id="dark-mode-toggle-mobile" onclick="darkModeToggle()"
+        src="/assets/images/icons/moon.svg" class="nav-mobile">
+</nav>
+    </header>
+
+    <main>
+        <div class="cards">
+    <div class="card digital" onclick="location.href='/digital';">
+  <img src="/assets/images/covers/digital.webp" alt="Digital Photography" />
+  <div class="card-title">
+    digital
+  </div>
+</div>
+
+<div class="card analog" onclick="location.href='/analog';">
+  <img src="/assets/images/covers/analog.webp" alt="Analog Photography" />
+  <div class="card-title">
+    analog
+  </div>
+</div>
+
+<div class="card grad" onclick="location.href='/grad';">
+  <img src="/assets/images/covers/grad.webp" alt="Graduation Photography" />
+  <div class="card-title">
+    grad
+  </div>
+</div>
+
+</div>
+
+<script src="/assets/js/dark.js"></script>
+    </main>
+
+    <footer>
+        
+    </footer>
+
+
+    <script src="/assets/js/global.js"></script>
+</body>
+
+</html>
