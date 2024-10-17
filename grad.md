@@ -4,14 +4,45 @@ title: Grad Photos
 ---
 
 <div id="myModal" class="modal">
-  <span class="close" onclick="closeModal()">&times;</span>
-  <div class="modal-content">
-    {% for i in (1..12) %}
-      <div class="mySlides">
-        <img src="{{ '/assets/images/grad/grad-' | append: i | append: '.webp' | relative_url }}" class="modal-image-{% if i == 10 or i == 12 or i == 4 or i == 3 or i == 1 or i == 9 %}horizontal{% else %}vertical{% endif %}">
-      </div>
-    {% endfor %}
-  </div>
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+        <div class="mySlides">
+            <img src="{{ '/assets/images/grad/grad-13.webp' | relative_url }}" class="modal-image-vertical">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/grad/grad-10.webp' | relative_url }}" class="modal-image-horizontal">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/grad/grad-14.webp' | relative_url }}" class="modal-image-vertical">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/grad/grad-4.webp' | relative_url }}" class="modal-image-vertical">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/grad/grad-12.webp' | relative_url }}" class="modal-image-horizontal">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/grad/grad-8.webp' | relative_url }}" class="modal-image-vertical">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/grad/grad-5.webp' | relative_url }}" class="modal-image-vertical">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/grad/grad-15.webp' | relative_url }}" class="modal-image-vertical">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/grad/grad-3.webp' | relative_url }}" class="modal-image-horizontal">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/grad/grad-1.webp' | relative_url }}" class="modal-image-horizontal">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/grad/grad-9.webp' | relative_url }}" class="modal-image-horizontal">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/grad/grad-11.webp' | relative_url }}" class="modal-image-vertical">
+        </div>
+    </div>
 </div>
 
 <div class="photo-gallery">

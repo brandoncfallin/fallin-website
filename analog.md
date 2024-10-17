@@ -4,24 +4,58 @@ title: Analog Photos
 ---
 
 <div id="myModal" class="modal">
-  <span class="close" onclick="closeModal()">&times;</span>
-  <div class="modal-content">
-    {% for i in (1..16) %}
-      {% if i == 11 or i == 6 or i == 10 %}
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
         <div class="mySlides">
-          <img src="{{ '/assets/images/analog/analog-' | append: i | append: '.webp' | relative_url }}" class="modal-image-square">
+            <img src="{{ '/assets/images/analog/analog-13.webp' | relative_url }}"
+                class="modal-image-vertical">
         </div>
-      {% elsif i == 14 or i == 1 or i == 9 or i == 15 or i == 8 %}
         <div class="mySlides">
-          <img src="{{ '/assets/images/analog/analog-' | append: i | append: '.webp' | relative_url }}" class="modal-image-horizontal">
+            <img src="{{ '/assets/images/analog/analog-14.webp' | relative_url }}"
+                class="modal-image-horizontal">
         </div>
-      {% else %}
         <div class="mySlides">
-          <img src="{{ '/assets/images/analog/analog-' | append: i | append: '.webp' | relative_url }}" class="modal-image-vertical">
+            <img src="{{ '/assets/images/analog/analog-7.webp' | relative_url }}"
+                class="modal-image-vertical">
         </div>
-      {% endif %}
-    {% endfor %}
-  </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/analog/analog-1.webp' | relative_url }}"
+                class="modal-image-horizontal">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/analog/analog-5.webp' | relative_url }}"
+                class="modal-image-vertical">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/analog/analog-9.webp' | relative_url }}"
+                class="modal-image-horizontal">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/analog/analog-11.webp' | relative_url }}" class="modal-image-square">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/analog/analog-6.webp' | relative_url }}" class="modal-image-square">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/analog/analog-10.webp' | relative_url }}" class="modal-image-square">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/analog/analog-4.webp' | relative_url }}"
+                class="modal-image-vertical">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/analog/analog-15.webp' | relative_url }}"
+                class="modal-image-horizontal">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/analog/analog-16.webp' | relative_url }}"
+                class="modal-image-vertical">
+        </div>
+        <div class="mySlides">
+            <img src="{{ '/assets/images/analog/analog-8.webp' | relative_url }}"
+                class="modal-image-horizontal">
+        </div>
+    </div>
 </div>
 
 <div class="photo-gallery">
