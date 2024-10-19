@@ -62,19 +62,22 @@ td a{
 }
 
 .button-holder{
-	position: absolute;
-	top: 0;
-	right: 0;
-	--webkit-margin-end: 0px;
+	position: absolute !important;
+	top: 0 !important;
+	right: 0 !important;
+	line-height: 0 !important; /* Reset line height */
+	--webkit-margin-end: 0px !important;
 }
 
 .close {
+	position: absolute;
 	background-color: white;
 	color: #999;
 	font-size: 35px;
 	font-weight: 300;
-	margin-top: 0px;
-	margin-bottom: 6px;
+	margin: 0 !important;
+	padding: 0 !important; 
+	transform: translate(25%, -25%); /* Move half the button size up and right */
 }
 	.close:hover, .close:focus {
 		color: #222;
