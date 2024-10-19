@@ -3,7 +3,6 @@
 
 <head>
     <script src="{{ '/assets/js/dark.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/global.js' | relative_url }}"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
@@ -28,6 +27,7 @@
     <footer>
         {% if page.display_footer %}{% include footer.html %}{% endif %}
     </footer>
+    <script src="{{ '/assets/js/global.js' | relative_url }}"></script>
 </body>
 
 </html>
