@@ -16,6 +16,7 @@
 
 <body>
     <script src="{{ '/assets/js/dark.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/global.js' | relative_url }}"></script>
     <header>
         {% include navigation.html %}
     </header>
@@ -27,9 +28,6 @@
     <footer>
         {% if page.display_footer %}{% include footer.html %}{% endif %}
     </footer>
-
-
-    <script src="{{ '/assets/js/global.js' | relative_url }}"></script>
 </body>
 
 </html>

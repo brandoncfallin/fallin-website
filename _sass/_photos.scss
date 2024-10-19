@@ -8,7 +8,6 @@
 
 .card {
   color: white;
-  transition: transform .2s;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +16,6 @@
   overflow: hidden;
 
   &:hover {
-    transform: scale(1.02);
     cursor: pointer;
   }
 
