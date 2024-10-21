@@ -1,24 +1,24 @@
 // Get user dark mode preference, make sure dark mode has not been toggled by user
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && sessionStorage.getItem("delta") == null) {
-  sessionStorage.setItem("dark-mode", "dark");
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem("delta") == null) {
+  localStorage.setItem("dark-mode", "dark");
   makeDark();
 }
 
 // Toggles dark mode on click 
 function darkModeToggle() {
-  if (sessionStorage.getItem("dark-mode") == "dark") {
+  if (localStorage.getItem("dark-mode") == "dark") {
     document.body.classList.add("animated");
     makeLight();
     document.body.classList.remove("animated");
-    sessionStorage.setItem("dark-mode", "light");
-    sessionStorage.setItem("delta", "true")
+    localStorage.setItem("dark-mode", "light");
+    localStorage.setItem("delta", "true")
   }
   else {
     document.body.classList.add("animated");
     makeDark();
     document.body.classList.remove("animated");
-    sessionStorage.setItem("dark-mode", "dark");
-    sessionStorage.setItem("delta", "true")
+    localStorage.setItem("dark-mode", "dark");
+    localStorage.setItem("delta", "true")
   }
 } 
 
