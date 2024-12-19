@@ -10,7 +10,7 @@ display_footer: True
 
 <h4 id="graduate-research-assistant-university-of-florida" class="bottom-gone-h4">Graduate Research Assistant @ University of Florida</h4>
 
-I'm currently living in Gainesville, FL and working in the [Nonlinear Controls and Robotics (NCR) Lab](https://ncr.mae.ufl.edu/){:target="\_blank"} while pursuing my PhD. My research focuses on privacy and obfuscation with application to nonlinear control systems. I recently graduated from the [University of Florida](https://mae.ufl.edu/){:target="\_blank"} with a Master's degrees in Aerospace Engineering and a minor in Electrical Engineering.
+I'm currently living in Gainesville, FL and working in the [Nonlinear Controls and Robotics (NCR) Lab](https://ncr.mae.ufl.edu/){:target="\_blank"} while pursuing my PhD. My research focuses on privacy and obfuscation with application to nonlinear control systems. I recently graduated from the [University of Florida](https://mae.ufl.edu/){:target="\_blank"} with a Master's degree in Aerospace Engineering and a minor in Electrical Engineering.
 
 <h2 id="publications" class="bottom-gone-h2">Publications</h2>
 
