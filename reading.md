@@ -9,6 +9,9 @@ Lately, I've been carrying my Kindle everywhere in an effort to reduce screen ti
 Here's a list of the books I've been reading.
 </p>
 
+<h4 class="no-bottom">2025</h4>
+{% include reading_table_2025.html %}
+
 <h4 class="no-bottom">2024</h4>
 {% include reading_table_2024.html %}
 
