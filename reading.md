@@ -5,17 +5,23 @@ display_footer: True
 ---
 
 <p class="no-bottom">
-Lately, I've been carrying my Kindle everywhere in an effort to reduce screen time and social media usage.
-Here's a list of the books I've been reading.
+I'm aiming to read at least 18 books this year.
+<br>
+<br>
+🎧 = audiobook
 </p>
 
-<h4 class="no-bottom">2025</h4>
+<h3 class="no-bottom">2025</h3>
 {% include reading_table_2025.html %}
 
-<h4 class="no-bottom">2024</h4>
-{% include reading_table_2024.html %}
+<details>
+    <summary><h3 class="no-bottom" style="display: inline; cursor: pointer;">2024</h3></summary>
+    {% include reading_table_2024.html %}
+</details>
 
-<h4 class="no-bottom">2023</h4>
-{% include reading_table_2023.html %}
+<details>
+    <summary><h3 class="no-bottom" style="display: inline; cursor: pointer;">2023</h3></summary>
+    {% include reading_table_2023.html %}
+</details>
 
 {% include reading_dialogs.html %}
