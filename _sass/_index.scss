@@ -10,6 +10,17 @@
 	padding-bottom: 100%;
 }
 
+/* BIBLIOGRAPHY */
+.bibliography {
+	padding-left: 2em;
+  }
+  
+  .bibliography li {
+	padding-left: 1em;
+	text-indent: -1em;
+	margin-bottom: 0.5em;
+  }
+
 /* WORK EXPERIENCE */
 .work-item{
 	display: flex;

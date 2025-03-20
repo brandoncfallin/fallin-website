@@ -13,13 +13,10 @@ display_footer: True
 I'm currently living in Gainesville, FL and working in the [Nonlinear Controls and Robotics (NCR) Lab](https://ncr.mae.ufl.edu/){:target="\_blank"} while pursuing my PhD. My research focuses on privacy and obfuscation with application to nonlinear control systems. I recently graduated from the [University of Florida](https://mae.ufl.edu/){:target="\_blank"} with a Master's degree in Aerospace Engineering and a minor in Electrical Engineering.
 
 <h2 id="publications" class="bottom-gone-h2">Publications</h2>
-
-**[C3]** A. Benvenuti, C. Hawkins, **B. Fallin**, B. Chen, B. Bialy, M. Dennis, and M.T. Hale, ["Differentially Private Reward Functions for Multi-Agent Markov Decision Processes,"](https://ieeexplore.ieee.org/abstract/document/10666610){:target="\_blank"} in Proc. IEEE Conf. Control Technol. Appl., 2024.
-
-**[C2]** B. Chen, B. She, C. Hawkins, A. Benvenuti, **B. Fallin**, P.E. Paré, and M.T. Hale, ["Differentially Private Computation of Basic Reproduction Numbers in Networked Epidemic Models,"](https://ieeexplore.ieee.org/abstract/document/10644264){:target="\_blank"} in Proc. Am. Control Conf., 2024.
-
-**[C1] B. Fallin**, C. Hawkins, B. Chen, P. Gohari, A. Benvenuti, U. Topcu, and M.T. Hale, ["Differential Privacy for Stochastic Matrices Using the Matrix Dirichlet Mechanism,"](https://ieeexplore.ieee.org/abstract/document/10383376){:target="\_blank"} in Proc. IEEE Conf. Decis. Control, 2023.
+<div id="bibliography"></div>
 
 <h2 id="work-experience" class="bottom-gone-h2">Work Experience</h2>
+
+<script src="/assets/js/bib.js"></script>
 
 {% include work_experience.html %}
