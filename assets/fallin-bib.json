@@ -1,5 +1,16 @@
 [
     {
+        "url": "https://arxiv.org/abs/2503.21007",
+        "primaryclass": "eess.SY",
+        "archiveprefix": "arXiv",
+        "eprint": "2503.21007",
+        "year": "2025",
+        "author": "Omkar Sudhir Patil and Brandon C. Fallin and Cristian F. Nino and Rebecca G. Hart and Warren E. Dixon",
+        "title": "Bounds on Deep Neural Network Partial Derivatives with Respect to Parameters",
+        "ENTRYTYPE": "misc",
+        "ID": "Patil.Fallin.ea2025"
+    },
+    {
         "url": "https://arxiv.org/abs/2503.15360",
         "primaryclass": "eess.SY",
         "archiveprefix": "arXiv",

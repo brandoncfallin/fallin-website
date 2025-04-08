@@ -70,7 +70,8 @@ function formatIEEECitation(entry) {
     
     // Title in quotes, with link if URL is present
     if (entry.url) {
-        citation += `"<a href="${entry.url}" target="_blank">${entry.title}</a>", `;
+        // Updated code
+        citation += `<a href="${entry.url}" target="_blank">"${entry.title}"</a>, `;
     } else {
         citation += `"${entry.title}", `;
     }
