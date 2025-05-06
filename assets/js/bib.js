@@ -4,7 +4,7 @@ let bibliographyData = [];
 // Function to fetch the bibliography data from the JSON file in /assets directory
 async function loadBibliographyData() {
     try {
-        const response = await fetch('../assets/fallin-bib.json');
+        const response = await fetch('/assets/fallin-bib.json');
         if (!response.ok) {
             throw new Error(`Failed to load bibliography data: ${response.status} ${response.statusText}`);
         }
