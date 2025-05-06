@@ -2,6 +2,7 @@ title: Brandon Fallin
 description: Graduate Research Assistant @ University of Florida
 domain: brandoncfallin.com   
 url: https://brandoncfallin.com
+baseurl: ""
 
 # Build settings
 markdown: kramdown
@@ -30,7 +31,7 @@ collections:
 collections:
   microblog:
     output: true
-    permalink: /micro/:year/:month/:day/:title/
+    permalink: /posts/:year/:month/:day/:title/
 
 # Default front matter
 defaults:
@@ -46,4 +47,3 @@ defaults:
       type: "microblog"
     values:
       layout: "microblog_post"
-

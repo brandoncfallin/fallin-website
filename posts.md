@@ -7,7 +7,7 @@ display_footer: True
 <h1>Recent Posts</h1>
 
 <div class="microblog-feed">
-  {% for post in site.microblog reversed %}
+  {% for post in site.posts reversed %}
     <article class="microblog-post">
       <header>
         <h2>{{ post.subject }}</h2>
