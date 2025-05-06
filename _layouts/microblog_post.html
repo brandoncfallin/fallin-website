@@ -1,9 +1,10 @@
 ---
 layout: default
 ---
-<article class="microblog-post">
+
+<article class="microblog-post" style="margin-top: 20px;">
   <header>
-    <h2>{{ page.subject }}</h2>
+    <h2>{{ page.title }}</h2>
     <time datetime="{{ page.date | date_to_xmlschema }}">
       {{ page.date | date: "%B %d, %Y at %I:%M %p" }}
     </time>

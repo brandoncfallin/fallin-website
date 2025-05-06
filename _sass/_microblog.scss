@@ -44,6 +44,14 @@
   max-width: 80%;
 }
 
+.microblog-linkout {
+  color: #333;
+}
+  .dark .microblog-linkout {
+    color: #f9f9f9;
+  }
+
+
 /* Caption styling */
 .microblog-content .img-caption {
   text-align: center;

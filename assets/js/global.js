@@ -24,15 +24,15 @@ function darkModeToggle() {
 
 // Toggles dark mode
 function makeDark() {
-  document.getElementById("nav-icon").src = "../assets/images/icons/menu-wht.svg";
+  document.getElementById("nav-icon").src = "/assets/images/icons/menu-wht.svg";
   document.documentElement.classList.add("dark");
   document.querySelectorAll("dialog").forEach(item => {
     item.classList.add("dark");
   })
   document.getElementById("nav-menu").classList.add("dark");
   
-  document.getElementById("dark-mode-toggle").src = "../assets/images/icons/sun.svg";
-  document.getElementById("dark-mode-toggle-mobile").src = "../assets/images/icons/sun.svg";
+  document.getElementById("dark-mode-toggle").src = "/assets/images/icons/sun.svg";
+  document.getElementById("dark-mode-toggle-mobile").src = "/assets/images/icons/sun.svg";
 }
 
 // Toggles light mode
@@ -42,9 +42,9 @@ function makeLight() {
   document.querySelectorAll("dialog").forEach(item => {
     item.classList.remove("dark");
   })
-  document.getElementById("dark-mode-toggle").src = "../assets/images/icons/moon.svg";
-  document.getElementById("dark-mode-toggle-mobile").src = "../assets/images/icons/moon.svg";
-  document.getElementById("nav-icon").src = "../assets/images/icons/menu-blk.svg";
+  document.getElementById("dark-mode-toggle").src = "/assets/images/icons/moon.svg";
+  document.getElementById("dark-mode-toggle-mobile").src = "/assets/images/icons/moon.svg";
+  document.getElementById("nav-icon").src = "/assets/images/icons/menu-blk.svg";
 }
 
 // Toggles mobile menu on click
