@@ -10,7 +10,7 @@ display_footer: True
   {% for post in site.posts reversed %}
     <article class="microblog-post">
       <header>
-        <h2>{{ post.subject }}</h2>
+        <h2>{{ post.title }}</h2>
         <time datetime="{{ post.date | date_to_xmlschema }}">
           {{ post.date | date: "%B %d, %Y at %I:%M %p" }}
         </time>

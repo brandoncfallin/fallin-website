@@ -1,6 +1,6 @@
 ---
 layout: microblog_post
-subject: "Comet Tsuchinshan–ATLAS"
+title: "Comet Tsuchinshan–ATLAS"
 date: 2024-10-16 14:30:00 -0500
 ---
 
