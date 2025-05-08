@@ -25,11 +25,11 @@ sass:
 
 # Collections
 collections:
-  - publications
-  - work_experiences
-
-collections:
-  microblog:
+  publications:
+    output: false
+  work_experiences:
+    output: false
+  posts:
     output: true
     permalink: /posts/:year/:month/:day/:title/
 

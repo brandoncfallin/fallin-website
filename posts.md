@@ -8,7 +8,7 @@ display_footer: True
 
 <div class="microblog-feed">
   {% for post in site.posts %}
-    <article class="microblog-post">
+    <article class="microblog-post-preview">
       <header>
         <h2><a href="{{ post.url | relative_url }}" class="microblog-linkout">{{ post.title }}</a></h2>
         <time datetime="{{ post.date | date_to_xmlschema }}">

@@ -59,6 +59,11 @@ a{
 	float:right;
 }
 
+/* HTML */ 
+html{
+	font-size: 100%; // respect user browser settings
+}
+
 /* BODY */
 body{
 	font-family: Arial, sans-serif;
@@ -66,12 +71,39 @@ body{
 	padding:1em;
 	max-width: 650px;
 	text-align: left;
+	line-height: 1.4;
 }
 
 /* FOOTER */
 footer{
 	text-align: center;
 }
+
+/* HEADING STYLES */
+h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, sans-serif;
+    // margin-top: 1.5em;
+    // margin-bottom: 0.75em;
+    line-height: 1.2;
+    font-weight: bold;
+    color: #333;
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: #f0f0f0;
+}
+
+h1 { font-size: 2.25rem; }   // ~36px
+h2 { font-size: 1.875rem; }  // ~30px
+h3 { font-size: 1.5rem; }    // ~24px
+h4 { font-size: 1.25rem; }   // ~20px
+h5 { font-size: 1.125rem; }  // ~18px 
+h6 { font-size: 1rem; }      // ~16px 
+
+// h1:first-child, h2:first-child, h3:first-child,
+// h4:first-child, h5:first-child, h6:first-child {
+//     margin-top: 0;
+// }
 
 /* MOBILE */
 @media (min-width: 0px){
@@ -126,13 +158,13 @@ footer{
 
 	/* BODY */
 	body{
-		font-size: 18px;
+		font-size: 1rem; // ~16px
 	}
 
 	/* FOOTER */
 	footer{
 		margin-top: 40px;
-		font-size: 18px;
+		font-size: 16px;
 	}
 		footer div a{
 			margin: 0px 5px;
@@ -160,11 +192,33 @@ footer{
 	nav a{
 		margin: 0px 5px;
 	}
+
+	nav a:first-child{
+		margin-left: 0px;
+	}
+
+	/* BODY */
+	body{
+		font-size: 1.0625rem; // ~17px
+	}
+
+	/* FOOTER */
+	footer{
+		font-size: 17px;
+	}
 }
 
 /* LAPTOP */
 @media (min-width: 767px){
+	/* BODY */
+	body{
+		font-size: 1.125rem; // ~18px
+	}
 
+	/* FOOTER */
+	footer{
+		font-size: 18px;
+	}
 }
 
 /* DESKTOP */
