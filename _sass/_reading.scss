@@ -1,3 +1,11 @@
+/* DROPDOWN */
+details > summary h3 {
+  // Make the text unselectable
+  -webkit-user-select: none; 
+  -ms-user-select: none;  
+  user-select: none;        
+}
+
 /* READING ENTRIES TABLE */
 table{
 	text-align: left;
