@@ -64,15 +64,21 @@ def collect_thread_text_and_images(uri, slug):
         nonlocal image_count
         if node.post.author.handle != HANDLE:
             return
+
+        block = []
         content = node.post.record.text.strip()
+        block.append(f"> {content}" if depth > 0 else content)
+
         images = node.post.embed.images if hasattr(node.post.embed, "images") else []
         for i, img in enumerate(images):
             img_url = img.fullsize
             local_path = download_image(img_url, slug, image_count)
             if local_path:
-                segments.append(f"![{slug}]({local_path}){{: .blog-image .med}}\n")
+                block.append(f"![{slug}]({local_path}){{: .blog-image .med}}\n")
             image_count += 1
-        segments.append(f"> {content}" if depth > 0 else content)
+
+        segments.extend(block)
+
         for reply in getattr(node, "replies", []) or []:
             walk(reply, depth + 1)
 
