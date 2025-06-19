@@ -20,7 +20,7 @@ os.makedirs(IMAGE_DIR, exist_ok=True)
 client = Client()
 client.login(HANDLE, APP_PASSWORD)
 
-feed = client.app.bsky.feed.get_author_feed({"actor": HANDLE, "limit": 10})
+feed = client.app.bsky.feed.get_author_feed({"actor": HANDLE, "limit": 50})
 
 
 def slugify(text, limit=30):
@@ -42,17 +42,6 @@ def download_image(url, slug, index):
             f.write(resp.content)
         return f"{SITE_IMAGE_PATH}/{filename}"
     return None
-
-
-# Count existing Bluesky posts (those with title starting with 'Post #')
-post_index = 1
-for fname in os.listdir(OUTPUT_DIR):
-    if fname.endswith(".md"):
-        with open(os.path.join(OUTPUT_DIR, fname)) as f:
-            for line in f:
-                if line.startswith("title:") and "Post #" in line:
-                    post_index += 1
-                    break
 
 
 def collect_thread_text_and_images(uri, slug):
@@ -78,13 +67,14 @@ def collect_thread_text_and_images(uri, slug):
             image_count += 1
 
         content = node.post.record.text.strip()
-        block.append(content)
+        if content:
+            block.append(f"\n{content}")
 
         segments.extend(block)
 
         replies = getattr(node, "replies", []) or []
         if replies:
-            segments.append("\n---\n")  # Divider only if more content follows
+            segments.append("\n---\n")
 
         for reply in replies:
             walk(reply, depth + 1)
@@ -93,18 +83,26 @@ def collect_thread_text_and_images(uri, slug):
     return segments
 
 
-for item in feed.feed:
+# Filter only root posts and sort by time ascending
+root_posts = [
+    item
+    for item in feed.feed
+    if not hasattr(item.post.record, "reply") or item.post.record.reply is None
+]
+root_posts.sort(
+    key=lambda x: datetime.fromisoformat(
+        x.post.record.created_at.replace("Z", "+00:00")
+    )
+)
+
+for i, item in enumerate(root_posts):
     post = item.post.record
     timestamp = datetime.fromisoformat(post.created_at.replace("Z", "+00:00"))
     slug = slugify(post.text.split("\n")[0], limit=30)
     filename = f"{timestamp.strftime('%Y-%m-%d')}-{slug}.md"
     filepath = os.path.join(OUTPUT_DIR, filename)
 
-    title_line = f"\U0001f535\u2601\ufe0f # {post_index:03d}"
-    post_index += 1
-
-    if hasattr(post, "reply") and post.reply is not None:
-        continue  # Skip replies
+    title_line = f"\U0001f535\u2601\ufe0f # {i + 1:03d}"
 
     thread = client.app.bsky.feed.get_post_thread({"uri": item.post.uri})
     is_thread = thread.thread.replies is not None and len(thread.thread.replies) > 0
@@ -114,12 +112,14 @@ for item in feed.feed:
     else:
         content_lines = []
         images = item.post.embed.images if hasattr(item.post.embed, "images") else []
-        for i, img in enumerate(images):
+        for j, img in enumerate(images):
             img_url = img.fullsize
-            local_path = download_image(img_url, slug, i)
+            local_path = download_image(img_url, slug, j)
             if local_path:
                 content_lines.append(f"![{slug}]({local_path}){{: .blog-image .med}}\n")
-        content_lines.append(post.text.strip())
+        text = post.text.strip()
+        if text:
+            content_lines.append(text)
 
     with open(filepath, "w") as f:
         f.write(f"""---
