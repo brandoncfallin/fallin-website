@@ -60,7 +60,7 @@ def collect_thread_text_and_images(uri, slug):
     segments = []
     image_count = 0
 
-    def walk(node):
+    def walk(node, depth=0):
         nonlocal image_count
         if node.post.author.handle != HANDLE:
             return
@@ -72,15 +72,18 @@ def collect_thread_text_and_images(uri, slug):
             if local_path:
                 segments.append(f"![{slug}]({local_path}){{: .blog-image .med}}\n")
             image_count += 1
-        segments.append(content)
+        segments.append(f"> {content}" if depth > 0 else content)
         for reply in getattr(node, "replies", []) or []:
-            walk(reply)
+            walk(reply, depth + 1)
 
     walk(thread.thread)
     return segments
 
 
 for item in feed.feed:
+    if hasattr(item.post.record, "reply") and item.post.record.reply is not None:
+        continue  # Skip replies, only process root posts
+
     post = item.post.record
     timestamp = datetime.fromisoformat(post.created_at.replace("Z", "+00:00"))
     slug = slugify(post.text.split("\n")[0], limit=30)
