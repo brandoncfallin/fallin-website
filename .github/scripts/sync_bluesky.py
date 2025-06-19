@@ -23,11 +23,11 @@ client.login(HANDLE, APP_PASSWORD)
 feed = client.app.bsky.feed.get_author_feed({"actor": HANDLE, "limit": 10})
 
 
-def slugify(text):
+def slugify(text, limit=30):
     text = text.strip().lower()
     text = re.sub(r"[^a-z0-9\s-]", "", text)
     text = re.sub(r"\s+", "-", text)
-    return text[:50] or "untitled"
+    return text[:limit] or "untitled"
 
 
 def download_image(url, slug, index):
@@ -57,11 +57,11 @@ for fname in os.listdir(OUTPUT_DIR):
 for item in feed.feed:
     post = item.post.record
     timestamp = datetime.fromisoformat(post.created_at.replace("Z", "+00:00"))
-    slug = slugify(post.text.split("\n")[0])
+    slug = slugify(post.text.split("\n")[0], limit=30)
     filename = f"{timestamp.strftime('%Y-%m-%d')}-{slug}.md"
     filepath = os.path.join(OUTPUT_DIR, filename)
 
-    title_line = f"\U0001f535\u2601\ufe0f @{HANDLE} — Post #{post_index:03d}"
+    title_line = f"\U0001f535\u2601\ufe0f # {post_index:03d}"
     post_index += 1
 
     content_lines = [post.text.strip()]
@@ -72,9 +72,7 @@ for item in feed.feed:
         img_url = img.fullsize
         local_path = download_image(img_url, slug, i)
         if local_path:
-            content_lines.insert(
-                0, f"![{slug}]({{local_path}}){{: .blog-image .med}}\n"
-            )
+            content_lines.insert(0, f"![{slug}]({local_path}){{: .blog-image .med}}\n")
 
     with open(filepath, "w") as f:
         f.write(f"""---
