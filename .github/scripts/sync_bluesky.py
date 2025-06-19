@@ -66,8 +66,11 @@ def collect_thread_text_and_images(uri, slug):
             return
 
         block = []
+        ts = datetime.fromisoformat(node.post.record.created_at.replace("Z", "+00:00"))
+        block.append(f"**{ts.strftime('%B %d, %Y at %I:%M %p')}**")
+
         content = node.post.record.text.strip()
-        block.append(f"> {content}" if depth > 0 else content)
+        block.append(content)
 
         images = node.post.embed.images if hasattr(node.post.embed, "images") else []
         for i, img in enumerate(images):
@@ -78,6 +81,7 @@ def collect_thread_text_and_images(uri, slug):
             image_count += 1
 
         segments.extend(block)
+        segments.append("\n---\n")  # Divider between thread entries
 
         for reply in getattr(node, "replies", []) or []:
             walk(reply, depth + 1)
