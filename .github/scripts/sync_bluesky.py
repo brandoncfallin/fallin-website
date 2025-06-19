@@ -31,7 +31,9 @@ def slugify(text):
 
 
 def download_image(url, slug, index):
-    ext = os.path.splitext(url.split("?")[0])[1]
+    ext = os.path.splitext(url.split("?")[0])[1] or ".jpg"
+    if not ext.startswith("."):
+        ext = "." + ext
     filename = f"{slug}-{index}{ext}"
     filepath = os.path.join(IMAGE_DIR, filename)
     resp = requests.get(url)
@@ -59,7 +61,7 @@ for item in feed.feed:
     filename = f"{timestamp.strftime('%Y-%m-%d')}-{slug}.md"
     filepath = os.path.join(OUTPUT_DIR, filename)
 
-    title_line = f"Post #{post_index:03d}"
+    title_line = f"\U0001f535\u2601\ufe0f @{HANDLE} — Post #{post_index:03d}"
     post_index += 1
 
     content_lines = [post.text.strip()]
@@ -71,8 +73,7 @@ for item in feed.feed:
         local_path = download_image(img_url, slug, i)
         if local_path:
             content_lines.insert(
-                0,
-                f"![{slug}]({{ '{{' }} '{local_path}' | relative_url {{ '}}' }}){{: .blog-image .med}}\n",
+                0, f"![{slug}]({{local_path}}){{: .blog-image .med}}\n"
             )
 
     with open(filepath, "w") as f:
