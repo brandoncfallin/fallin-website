@@ -69,9 +69,6 @@ def collect_thread_text_and_images(uri, slug):
         ts = datetime.fromisoformat(node.post.record.created_at.replace("Z", "+00:00"))
         block.append(f"**{ts.strftime('%B %d, %Y at %I:%M %p')}**")
 
-        content = node.post.record.text.strip()
-        block.append(content)
-
         images = node.post.embed.images if hasattr(node.post.embed, "images") else []
         for i, img in enumerate(images):
             img_url = img.fullsize
@@ -80,10 +77,16 @@ def collect_thread_text_and_images(uri, slug):
                 block.append(f"![{slug}]({local_path}){{: .blog-image .med}}\n")
             image_count += 1
 
-        segments.extend(block)
-        segments.append("\n---\n")  # Divider between thread entries
+        content = node.post.record.text.strip()
+        block.append(content)
 
-        for reply in getattr(node, "replies", []) or []:
+        segments.extend(block)
+
+        replies = getattr(node, "replies", []) or []
+        if replies:
+            segments.append("\n---\n")  # Divider only if more content follows
+
+        for reply in replies:
             walk(reply, depth + 1)
 
     walk(thread.thread)
@@ -91,9 +94,6 @@ def collect_thread_text_and_images(uri, slug):
 
 
 for item in feed.feed:
-    if hasattr(item.post.record, "reply") and item.post.record.reply is not None:
-        continue  # Skip replies, only process root posts
-
     post = item.post.record
     timestamp = datetime.fromisoformat(post.created_at.replace("Z", "+00:00"))
     slug = slugify(post.text.split("\n")[0], limit=30)
@@ -103,7 +103,23 @@ for item in feed.feed:
     title_line = f"\U0001f535\u2601\ufe0f # {post_index:03d}"
     post_index += 1
 
-    content_lines = collect_thread_text_and_images(item.post.uri, slug)
+    if hasattr(post, "reply") and post.reply is not None:
+        continue  # Skip replies
+
+    thread = client.app.bsky.feed.get_post_thread({"uri": item.post.uri})
+    is_thread = thread.thread.replies is not None and len(thread.thread.replies) > 0
+
+    if is_thread:
+        content_lines = collect_thread_text_and_images(item.post.uri, slug)
+    else:
+        content_lines = []
+        images = item.post.embed.images if hasattr(item.post.embed, "images") else []
+        for i, img in enumerate(images):
+            img_url = img.fullsize
+            local_path = download_image(img_url, slug, i)
+            if local_path:
+                content_lines.append(f"![{slug}]({local_path}){{: .blog-image .med}}\n")
+        content_lines.append(post.text.strip())
 
     with open(filepath, "w") as f:
         f.write(f"""---
