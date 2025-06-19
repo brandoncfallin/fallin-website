@@ -1,4 +1,4 @@
-name: Sync Bluesky Posts
+name: sync-bluesky
 
 on:
   workflow_dispatch: # run manually
