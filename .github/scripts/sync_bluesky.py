@@ -54,6 +54,32 @@ for fname in os.listdir(OUTPUT_DIR):
                     post_index += 1
                     break
 
+
+def collect_thread_text_and_images(uri, slug):
+    thread = client.app.bsky.feed.get_post_thread({"uri": uri})
+    segments = []
+    image_count = 0
+
+    def walk(node):
+        nonlocal image_count
+        if node.post.author.handle != HANDLE:
+            return
+        content = node.post.record.text.strip()
+        images = node.post.embed.images if hasattr(node.post.embed, "images") else []
+        for i, img in enumerate(images):
+            img_url = img.fullsize
+            local_path = download_image(img_url, slug, image_count)
+            if local_path:
+                segments.append(f"![{slug}]({local_path}){{: .blog-image .med}}\n")
+            image_count += 1
+        segments.append(content)
+        for reply in getattr(node, "replies", []) or []:
+            walk(reply)
+
+    walk(thread.thread)
+    return segments
+
+
 for item in feed.feed:
     post = item.post.record
     timestamp = datetime.fromisoformat(post.created_at.replace("Z", "+00:00"))
@@ -64,15 +90,7 @@ for item in feed.feed:
     title_line = f"\U0001f535\u2601\ufe0f # {post_index:03d}"
     post_index += 1
 
-    content_lines = [post.text.strip()]
-
-    # Handle images
-    media = item.post.embed.images if hasattr(item.post.embed, "images") else []
-    for i, img in enumerate(media):
-        img_url = img.fullsize
-        local_path = download_image(img_url, slug, i)
-        if local_path:
-            content_lines.insert(0, f"![{slug}]({local_path}){{: .blog-image .med}}\n")
+    content_lines = collect_thread_text_and_images(item.post.uri, slug)
 
     with open(filepath, "w") as f:
         f.write(f"""---
