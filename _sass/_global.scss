@@ -31,7 +31,9 @@ a{
 	border-style: solid;
   	border-width: large;
 	border-color: white;
-	float:right;
+	margin-left: auto;
+	height: 24px;
+	width: 24px;
 }
 	#dark-mode-toggle:hover{
 		cursor: pointer;
@@ -95,11 +97,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 { font-size: 1.6rem; }
-h2 { font-size: 1.5rem; }
-h3 { font-size: 1.4rem; }
-h4 { font-size: 1.3rem; }
-h5 { font-size: 1.2rem; }
-h6 { font-size: 1.1rem; }
+h2 { font-size: 1.4rem; }
+h3 { font-size: 1.2rem; }
+h4 { font-size: 1.1rem; }
+h5 { font-size: 1.0rem; }
+h6 { font-size: 1.0rem; }
 
 // h1:first-child, h2:first-child, h3:first-child,
 // h4:first-child, h5:first-child, h6:first-child {
@@ -185,7 +187,9 @@ h6 { font-size: 1.1rem; }
 @media (min-width: 479px){
 	/* HEADER */
 	.nav-bar{
-		display: inline;
+		display: flex;
+		align-items: center;
+		width: 100%;
 	}
 
 	.nav-mobile{
@@ -217,4 +221,11 @@ h6 { font-size: 1.1rem; }
 /* DESKTOP */
 @media (min-width: 1023px){
 
+}
+
+/* MOBILE LANDSCAPE */
+@media (orientation: landscape) and (max-height: 500px) {
+  body {
+    font-size: 0.85rem;
+  }
 }
