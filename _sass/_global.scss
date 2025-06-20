@@ -75,7 +75,7 @@ body{
 	padding:1em;
 	max-width: 650px;
 	text-align: left;
-	line-height: 1.4;
+	line-height: 1.2;
 }
 
 /* FOOTER */
@@ -227,7 +227,9 @@ h6 { font-size: 1.0rem; }
 /* MOBILE LANDSCAPE */
 @media screen and (max-device-width: 480px) and (orientation: landscape) {
   p {
-    outline: 2px solid red; // debug
-    font-size: 0.8rem; // reinforce consistency
+    font-size: 1.1rem; // match h4
+    line-height: 1.2;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 }
