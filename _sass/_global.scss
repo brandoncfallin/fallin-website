@@ -64,7 +64,8 @@ a{
 
 /* HTML */ 
 html{
-	font-size: 100%; // respect user browser settings
+	font-size: 100%; 
+	--webkit-text-size-adjust: 100%; 
 }
 
 /* BODY */
@@ -75,7 +76,6 @@ body{
 	max-width: 650px;
 	text-align: left;
 	line-height: 1.4;
-	--webkit-text-size-adjust: 100%; 
 }
 
 /* FOOTER */
