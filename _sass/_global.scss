@@ -225,7 +225,7 @@ h6 { font-size: 1.0rem; }
 
 /* MOBILE LANDSCAPE */
 @media (orientation: landscape) and (max-height: 500px) {
-  body {
+  body, p {
     font-size: 0.8rem;
   }
 }
