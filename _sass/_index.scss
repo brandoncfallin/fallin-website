@@ -15,7 +15,6 @@
 }
 
 .profile-title h1 {
-    white-space: nowrap;
     margin-top: 0;
 }
 
@@ -30,16 +29,36 @@
 }
 
 .sidebar-connect {
-    display: none;
+    display: none; // This ensures it's visible where used
 }
+
 .sidebar-connect .footer-links {
+    display: flex;
+    gap: 1.2em; // Creates space between icons
     text-align: left;
+    margin-top: 0.5em;
 }
+
 .sidebar-connect .footer-links a {
-    margin: 0 8px;
+    margin: 0; // Reset margin
+    text-decoration: none; // Remove underline
+    font-size: 1.6rem; // Adjust icon size
+    color: #333; // Light mode color
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
 }
-.sidebar-connect .footer-links a:first-child {
-    margin-left: 0;
+
+.sidebar-connect .footer-links a:hover {
+    transform: scale(1.15);
+    color: #000;
+}
+
+// Dark mode styles
+.dark .sidebar-connect .footer-links a {
+    color: #f0f0f0; // Dark mode color
+}
+
+.dark .sidebar-connect .footer-links a:hover {
+    color: #fff;
 }
 
 /* BIBLIOGRAPHY */
@@ -60,6 +79,12 @@
 	justify-content: left;
 	align-items: center;
 }
+
+.work-item + p {
+    margin-top: -10px;
+    margin-bottom: 0.25em;
+}
+
 
 .work-exp-image{
 	vertical-align: middle;
@@ -115,9 +140,7 @@ span{
 	}
 
 	/* WORK EXPERIENCE */
-	.work-item{
-		margin-bottom: 1.5em;
-	}
+	/* All work-item spacing is now handled globally */
 
 	.work-exp-image{
 		width: 3em;
@@ -126,6 +149,7 @@ span{
 
 	.work-exp-listing{
 		margin-left: 0.6em;
+    // margin-bottom: 0;
 	}
 }
 
