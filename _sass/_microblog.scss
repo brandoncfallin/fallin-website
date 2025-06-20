@@ -1,5 +1,5 @@
 .microblog-feed {
-  max-width: 600px;
+  max-width: 850px;
   margin: 0 auto;
 }
 
@@ -13,8 +13,8 @@
 }
 
 .microblog-post {
-  margin-top: 20px; 
-  margin-bottom: 20px; 
+  max-width: 850px;
+  margin: 20px auto; 
 }
 
 .microblog-post-preview header,
@@ -42,14 +42,15 @@
 
 /* Image containment */
 .microblog-content img {
+  display: block;
+  margin: 1.5em auto;
+
+  /* To preserve aspect ratio and fit container width */
   max-width: 100%;
   height: auto;
-  display: block;
-  margin: 1em auto;
-}
 
-.microblog-content .blog-image.med {
-  max-width: 80%;
+  /* To prevent vertical images from being excessively tall */
+  max-height: 75vh;
 }
 
 .microblog-linkout {

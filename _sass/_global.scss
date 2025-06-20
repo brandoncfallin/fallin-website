@@ -1,15 +1,16 @@
 /* SITE-WIDE COMPONENTS */
 a{
-	color:#22884C;
+	color: inherit;
+	text-decoration: underline;
 }
 	a:hover{
-		color:#F2A900;
+		color:#22884C;
 	}
 	.dark a{
-		color:#F2A900;
+		color: inherit;
 	}
 		.dark a:hover{
-			color:#22884C;
+			color:#F2A900;
 		}
 
 /* DARK MODE */
@@ -93,12 +94,12 @@ h1, h2, h3, h4, h5, h6 {
     color: #f0f0f0;
 }
 
-h1 { font-size: 2.25rem; }   // ~36px
-h2 { font-size: 1.875rem; }  // ~30px
-h3 { font-size: 1.5rem; }    // ~24px
-h4 { font-size: 1.25rem; }   // ~20px
-h5 { font-size: 1.125rem; }  // ~18px 
-h6 { font-size: 1rem; }      // ~16px 
+h1 { font-size: 1.6rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.3rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1.1rem; }
 
 // h1:first-child, h2:first-child, h3:first-child,
 // h4:first-child, h5:first-child, h6:first-child {
@@ -109,7 +110,7 @@ h6 { font-size: 1rem; }      // ~16px
 @media (min-width: 0px){
 	/* SITE-WIDE COMPONENTS */
 	.bottom-gone-h1{
-		margin-bottom: -20px;
+		margin-bottom: 0;
 	}
 	
 	.bottom-gone-h2{
@@ -164,7 +165,6 @@ h6 { font-size: 1rem; }      // ~16px
 	/* FOOTER */
 	footer{
 		margin-top: 40px;
-		font-size: 16px;
 	}
 		footer div a{
 			margin: 0px 5px;
@@ -175,6 +175,9 @@ h6 { font-size: 1rem; }      // ~16px
 	}
 	.footer-links{
 		margin-bottom: 25px;
+	}
+	.footer-links a {
+		margin: 0 8px;
 	}
 }
 
@@ -197,27 +200,17 @@ h6 { font-size: 1rem; }      // ~16px
 		margin-left: 0px;
 	}
 
-	/* BODY */
-	body{
-		font-size: 1.0625rem; // ~17px
-	}
-
 	/* FOOTER */
 	footer{
-		font-size: 17px;
+		/* font-size rule removed */
 	}
 }
 
 /* LAPTOP */
 @media (min-width: 767px){
-	/* BODY */
-	body{
-		font-size: 1.125rem; // ~18px
-	}
-
 	/* FOOTER */
 	footer{
-		font-size: 18px;
+		/* font-size rule removed */
 	}
 }
 

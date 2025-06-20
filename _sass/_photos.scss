@@ -108,7 +108,7 @@
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 2000;
   left: 0;
   top: 0;
   width: 100%;
@@ -203,17 +203,18 @@
 
   /* MODAL CONTENT */
   .modal-image-vertical {
-    max-height: 65vh;
+    max-height: 90vh;
     max-width: 90vw;
   }
 
   .modal-image-horizontal {
     max-width: 90vw;
+    max-height: 90vh;
   }
 
   .modal-image-square {
-    width: 70vw;
-    height: 70vw;
+    max-width: 85vw;
+    max-height: 85vh;
   }
 }
 
@@ -241,11 +242,12 @@
 
   .modal-image-horizontal {
     max-width: 90vw;
+    max-height: 90vh;
   }
 
   .modal-image-square {
-    width: 70vw;
-    height: 70vw;
+    max-width: 85vw;
+    max-height: 85vh;
   }
 }
 

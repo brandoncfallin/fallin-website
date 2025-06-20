@@ -27,7 +27,7 @@
 </head>
 
 
-<body>
+<body {% if page.title=="Home" %}class="homepage" {% endif %}>
     <header>
         {% include navigation.html %}
     </header>

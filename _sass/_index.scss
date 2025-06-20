@@ -1,13 +1,45 @@
 /* PROFILE IMAGE */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.profile-header > div:first-child {
+    flex-shrink: 0;
+}
+
+.profile-title h4 {
+    font-weight: normal;
+    margin-top: 0.25em;
+}
+
+.profile-title h1 {
+    white-space: nowrap;
+    margin-top: 0;
+}
+
 .profile-image{
 	height: auto;
 	border-radius: 50%;
-	display: flex;
 }
 
 .profile-container{
 	position: relative;
 	padding-bottom: 100%;
+}
+
+.sidebar-connect {
+    display: none;
+}
+.sidebar-connect .footer-links {
+    text-align: left;
+}
+.sidebar-connect .footer-links a {
+    margin: 0 8px;
+}
+.sidebar-connect .footer-links a:first-child {
+    margin-left: 0;
 }
 
 /* BIBLIOGRAPHY */
@@ -18,6 +50,7 @@
   .bibliography li {
 	// padding-left: 1em;
 	// text-indent: -1em;
+  font-size: 0.9rem;
 	margin-bottom: 0.5em;
   }
 
@@ -68,8 +101,11 @@ span{
 @media (min-width: 0px){
 	/* PROFILE IMAGE */
 	.profile-image{
-		width: 40%;
-		margin-top: 10%;
+		width: 90px;
+	}
+
+	.profile-header {
+		padding-top: 1.5em;
 	}
 
 	/* WORK EXPERIENCE */
@@ -91,8 +127,7 @@ span{
 @media (min-width: 479px){
 	/* PROFILE IMAGE */
 	.profile-image{
-		width: 25%;
-		margin-top: 7%;
+		width: 130px;
 	}
 }
 
@@ -100,11 +135,74 @@ span{
 @media (min-width: 767px){
 	/* PROFILE IMAGE */
 	.profile-image{
-		margin-top: 5%;
+		width: 130px;
 	}
 }
 
 /* DESKTOP */
 @media (min-width: 1023px){
 
+}
+
+/* --- DESKTOP LAYOUT ADJUSTMENTS --- */
+@media (min-width: 479px) {
+
+  /* 1. Fix for consistent sticky header padding on desktop */
+  body {
+    padding-top: 0;
+  }
+  main {
+    padding-top: 0.5em;
+  }
+
+  /* 2. Persistent Header styling */
+  body > header {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+    background-color: white;
+    
+    /* Bottom-only box shadow */
+    box-shadow: 0 4px 5px -2px rgba(0,0,0,0.1);
+
+    /* Vertical padding for the header */
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  .dark body > header {
+    background-color: #222;
+    box-shadow: 0 4px 5px -2px rgba(0,0,0,0.5);
+  }
+}
+
+/* Homepage Two-Column Layout */
+@media (min-width: 767px) {
+  .home-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Adjust ratio as needed */
+    gap: 3em; /* Space between columns */
+    align-items: stretch;
+  }
+
+  .sidebar-sticky-content {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 4em;
+  }
+
+  .sidebar-connect {
+      display: block;
+  }
+
+  body.homepage footer {
+      display: none;
+  }
+
+  /* Override the default max-width for the homepage */
+  body {
+    max-width: 1100px;
+  }
 }
