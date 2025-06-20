@@ -63,9 +63,10 @@ a{
 }
 
 /* HTML */ 
-html{
-	font-size: 16px; 
-	--webkit-text-size-adjust: none; 
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 
 /* BODY */
@@ -226,10 +227,10 @@ h6 { font-size: 1.0rem; }
 
 /* MOBILE LANDSCAPE */
 @media screen and (max-device-width: 480px) and (orientation: landscape) {
-  p {
-    font-size: 1.1rem; // match h4
-    line-height: 1.2;
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
+  html, body, p {
+    font-size: 1.1rem !important; // match h4 exactly
+    -webkit-text-size-adjust: none !important;
+    text-size-adjust: none !important;
+    line-height: 1.2 !important;
   }
 }
