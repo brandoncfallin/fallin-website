@@ -225,8 +225,9 @@ h6 { font-size: 1.0rem; }
 }
 
 /* MOBILE LANDSCAPE */
-@media (orientation: landscape) and (max-height: 500px) {
-  body, p {
-    font-size: 0.8rem;
+@media screen and (max-device-width: 480px) and (orientation: landscape) {
+  p {
+    outline: 2px solid red; // debug
+    font-size: 0.8rem; // reinforce consistency
   }
 }
