@@ -97,11 +97,9 @@ root_posts.sort(
 )
 
 for i, item in enumerate(root_posts):
-    post_record = item.post.record
-    timestamp = datetime.fromisoformat(post_record.created_at.replace("Z", "+00:00"))
-    first_line_of_text = (
-        post_record.text.split("\n")[0] if post_record.text.strip() else ""
-    )
+    post = item.post.record
+    timestamp = datetime.fromisoformat(post.created_at.replace("Z", "+00:00"))
+    first_line_of_text = post.text.split("\n")[0] if post.text.strip() else ""
     slug = slugify(first_line_of_text, limit=30)
     filename = f"{timestamp.strftime('%Y-%m-%d')}-{slug}.md"
     filepath = os.path.join(OUTPUT_DIR, filename)
@@ -109,56 +107,69 @@ for i, item in enumerate(root_posts):
 
     print(f"Processing post: {filename}")
 
-    all_text_blocks = []
+    # Initialize lists to hold all content and images for the entire post/thread
+    all_content_blocks = []
     all_image_paths = []
 
     thread_view = client.app.bsky.feed.get_post_thread(
         {"uri": item.post.uri, "depth": 100}
     )
 
-    def process_thread_node(node, counter):
+    # This recursive function will now only collect information.
+    # The decision of how to format it will happen after the whole thread is processed.
+    def collect_thread_data(node, is_root=True):
         if node.post.author.handle != HANDLE:
-            return counter
+            return
 
-        current_post_text_block = []
+        # For replies, add a separator before the content.
+        if not is_root:
+            all_content_blocks.append("---")
+
+        # Create a block for the current post's text content.
+        current_text_block = []
         ts = datetime.fromisoformat(node.post.record.created_at.replace("Z", "+00:00"))
-        current_post_text_block.append(f"**{ts.strftime('%B %d, %Y at %I:%M %p')}**")
+        current_text_block.append(f"**{ts.strftime('%B %d, %Y at %I:%M %p')}**")
 
         text_content = node.post.record.text.strip()
         if text_content:
-            current_post_text_block.append(text_content)
+            current_text_block.append(text_content)
+        all_content_blocks.append("\n\n".join(current_text_block))
 
-        all_text_blocks.append("\n\n".join(current_post_text_block))
-
+        # Download and collect all image paths from the current post.
         images_in_node = (
             node.post.embed.images if hasattr(node.post.embed, "images") else []
         )
         for img in images_in_node:
             img_url = img.fullsize
-            local_path = download_image(img_url, slug, counter)
+            local_path = download_image(img_url, slug, len(all_image_paths))
             if local_path:
                 all_image_paths.append(local_path)
-                counter += 1
 
+        # Recurse through replies.
         if hasattr(node, "replies") and node.replies:
             for reply in sorted(node.replies, key=lambda r: r.post.record.created_at):
-                counter = process_thread_node(reply, counter)
-        return counter
+                collect_thread_data(reply, is_root=False)
 
+    # Start collecting data from the root of the thread.
     if thread_view.thread:
-        process_thread_node(thread_view.thread, 0)
+        collect_thread_data(thread_view.thread)
 
+    # Now, decide how to format the content based on the number of images collected.
     front_matter_images_str = ""
-    post_content = "\n\n---\n\n".join(all_text_blocks)
+    final_content = "\n\n".join(all_content_blocks)
 
     if len(all_image_paths) > 1:
+        # More than one image: create the gallery front matter.
         image_list_yaml = "\n".join([f"  - {p}" for p in all_image_paths])
         front_matter_images_str = f"images:\n{image_list_yaml}"
+        # The content is just the text blocks.
     elif len(all_image_paths) == 1:
+        # Exactly one image: embed it at the top of the text content.
         alt_text = slugify(first_line_of_text) or "Post image"
-        image_md = f"![{alt_text}]({all_image_paths[0]}){{: .blog-image .med}}\n\n"
-        post_content = image_md + post_content
+        image_md = f"![{alt_text}]({all_image_paths[0]}){{: .blog-image .med}}"
+        final_content = f"{image_md}\n\n{final_content}"
 
+    # --- Write the file ---
     with open(filepath, "w", encoding="utf-8") as f:
         f.write("---\n")
         f.write("layout: microblog_post\n")
@@ -167,7 +178,7 @@ for i, item in enumerate(root_posts):
         if front_matter_images_str:
             f.write(front_matter_images_str)
         f.write("---\n\n")
-        f.write(post_content)
+        f.write(final_content)
 
     print(f"  -> Created file: {filepath}")
 
