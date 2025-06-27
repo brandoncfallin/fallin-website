@@ -109,19 +109,16 @@ for i, item in enumerate(root_posts):
 
     print(f"Processing post: {filename}")
 
-    # Initialize lists to hold all content and images for the entire post/thread
     all_text_blocks = []
     all_image_paths = []
-    image_download_counter = 0
 
     thread_view = client.app.bsky.feed.get_post_thread(
         {"uri": item.post.uri, "depth": 100}
     )
 
-    def process_thread_node(node):
-        nonlocal image_download_counter
+    def process_thread_node(node, counter):
         if node.post.author.handle != HANDLE:
-            return
+            return counter
 
         current_post_text_block = []
         ts = datetime.fromisoformat(node.post.record.created_at.replace("Z", "+00:00"))
@@ -138,33 +135,30 @@ for i, item in enumerate(root_posts):
         )
         for img in images_in_node:
             img_url = img.fullsize
-            local_path = download_image(img_url, slug, image_download_counter)
+            local_path = download_image(img_url, slug, counter)
             if local_path:
                 all_image_paths.append(local_path)
-                image_download_counter += 1
+                counter += 1
 
         if hasattr(node, "replies") and node.replies:
             for reply in sorted(node.replies, key=lambda r: r.post.record.created_at):
-                process_thread_node(reply)
+                counter = process_thread_node(reply, counter)
+        return counter
 
     if thread_view.thread:
-        process_thread_node(thread_view.thread)
+        process_thread_node(thread_view.thread, 0)
 
-    # --- Re-integrated Conditional Image Logic ---
     front_matter_images_str = ""
     post_content = "\n\n---\n\n".join(all_text_blocks)
 
     if len(all_image_paths) > 1:
-        # If more than one image, create the gallery front matter
         image_list_yaml = "\n".join([f"  - {p}" for p in all_image_paths])
         front_matter_images_str = f"images:\n{image_list_yaml}"
     elif len(all_image_paths) == 1:
-        # If exactly one image, embed it at the top of the content
         alt_text = slugify(first_line_of_text) or "Post image"
         image_md = f"![{alt_text}]({all_image_paths[0]}){{: .blog-image .med}}\n\n"
         post_content = image_md + post_content
 
-    # --- Write the file ---
     with open(filepath, "w", encoding="utf-8") as f:
         f.write("---\n")
         f.write("layout: microblog_post\n")
