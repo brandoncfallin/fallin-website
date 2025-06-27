@@ -109,7 +109,9 @@ for i, item in enumerate(root_posts):
 
     print(f"Processing post: {filename}")
 
-    final_content_blocks = []
+    # Initialize lists to hold all content and images for the entire post/thread
+    all_text_blocks = []
+    all_image_paths = []
     image_download_counter = 0
 
     thread_view = client.app.bsky.feed.get_post_thread(
@@ -117,22 +119,19 @@ for i, item in enumerate(root_posts):
     )
 
     def process_thread_node(node):
-        """
-        Processes a node, creating a single block of text and images, and then processes its replies.
-        """
-        global image_download_counter  # FIX: Use 'global' instead of 'nonlocal'
-
+        nonlocal image_download_counter
         if node.post.author.handle != HANDLE:
             return
 
-        current_post_content = []
-
+        current_post_text_block = []
         ts = datetime.fromisoformat(node.post.record.created_at.replace("Z", "+00:00"))
-        current_post_content.append(f"**{ts.strftime('%B %d, %Y at %I:%M %p')}**")
+        current_post_text_block.append(f"**{ts.strftime('%B %d, %Y at %I:%M %p')}**")
 
         text_content = node.post.record.text.strip()
         if text_content:
-            current_post_content.append(text_content)
+            current_post_text_block.append(text_content)
+
+        all_text_blocks.append("\n\n".join(current_post_text_block))
 
         images_in_node = (
             node.post.embed.images if hasattr(node.post.embed, "images") else []
@@ -141,12 +140,8 @@ for i, item in enumerate(root_posts):
             img_url = img.fullsize
             local_path = download_image(img_url, slug, image_download_counter)
             if local_path:
-                current_post_content.append(
-                    f"![{slug}]({local_path}){{: .blog-image .med}}"
-                )
+                all_image_paths.append(local_path)
                 image_download_counter += 1
-
-        final_content_blocks.append("\n\n".join(current_post_content))
 
         if hasattr(node, "replies") and node.replies:
             for reply in sorted(node.replies, key=lambda r: r.post.record.created_at):
@@ -155,15 +150,30 @@ for i, item in enumerate(root_posts):
     if thread_view.thread:
         process_thread_node(thread_view.thread)
 
-    final_content = "\n\n---\n\n".join(final_content_blocks)
+    # --- Re-integrated Conditional Image Logic ---
+    front_matter_images_str = ""
+    post_content = "\n\n---\n\n".join(all_text_blocks)
 
+    if len(all_image_paths) > 1:
+        # If more than one image, create the gallery front matter
+        image_list_yaml = "\n".join([f"  - {p}" for p in all_image_paths])
+        front_matter_images_str = f"images:\n{image_list_yaml}"
+    elif len(all_image_paths) == 1:
+        # If exactly one image, embed it at the top of the content
+        alt_text = slugify(first_line_of_text) or "Post image"
+        image_md = f"![{alt_text}]({all_image_paths[0]}){{: .blog-image .med}}\n\n"
+        post_content = image_md + post_content
+
+    # --- Write the file ---
     with open(filepath, "w", encoding="utf-8") as f:
         f.write("---\n")
         f.write("layout: microblog_post\n")
         f.write(f'title: "{title_line}"\n')
         f.write(f"date: {timestamp.strftime('%Y-%m-%d %H:%M:%S %z')}\n")
+        if front_matter_images_str:
+            f.write(front_matter_images_str)
         f.write("---\n\n")
-        f.write(final_content)
+        f.write(post_content)
 
     print(f"  -> Created file: {filepath}")
 
