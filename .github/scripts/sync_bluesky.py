@@ -11,7 +11,7 @@ APP_PASSWORD = os.getenv("BLUESKY_PASSWORD")
 OUTPUT_DIR = "_posts"
 IMAGE_DIR = "assets/images/microblog"
 SITE_IMAGE_PATH = "/assets/images/microblog"
-LAST_RUN_FILE = ".last_run_timestamp"  # Stores the timestamp of the last run
+LAST_RUN_FILE = ".last_run_timestamp"
 
 # --- Setup ---
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -21,7 +21,7 @@ client = Client()
 client.login(HANDLE, APP_PASSWORD)
 
 
-# --- Helper Functions from your original script ---
+# --- Helper Functions ---
 def slugify(text, limit=30):
     text = text.strip().lower()
     text = re.sub(r"[^a-z0-9\s-]", "", text)
@@ -35,17 +35,19 @@ def download_image(url, slug, index):
         ext = "." + ext
     filename = f"{slug}-{index}{ext}"
     filepath = os.path.join(IMAGE_DIR, filename)
-    resp = requests.get(url)
-    if resp.ok:
+    try:
+        resp = requests.get(url, stream=True)
+        resp.raise_for_status()
         with open(filepath, "wb") as f:
-            f.write(resp.content)
+            for chunk in resp.iter_content(chunk_size=8192):
+                f.write(chunk)
         return f"{SITE_IMAGE_PATH}/{filename}"
-    return None
+    except requests.RequestException as e:
+        print(f"  - Error downloading image {url}: {e}")
+        return None
 
 
-# --- New Helper Functions for Incremental Sync ---
 def get_last_run_timestamp():
-    """Reads the timestamp from the last run file."""
     if not os.path.exists(LAST_RUN_FILE):
         return None
     with open(LAST_RUN_FILE, "r") as f:
@@ -56,13 +58,11 @@ def get_last_run_timestamp():
 
 
 def save_last_run_timestamp(timestamp):
-    """Saves the timestamp to the last run file."""
     with open(LAST_RUN_FILE, "w") as f:
         f.write(timestamp.isoformat())
 
 
 # --- Main Logic ---
-
 print("Starting Bluesky sync...")
 last_run_ts = get_last_run_timestamp()
 
@@ -73,7 +73,6 @@ else:
 
 feed = client.app.bsky.feed.get_author_feed({"actor": HANDLE, "limit": 100})
 
-# Filter for root posts that are new since the last run
 root_posts = []
 for item in feed.feed:
     is_root_post = not (
@@ -91,8 +90,6 @@ if not root_posts:
     exit()
 
 print(f"Found {len(root_posts)} new posts to process.")
-
-# Sort posts by time ascending to process them in order and preserve your original title indexing
 root_posts.sort(
     key=lambda x: datetime.fromisoformat(
         x.post.record.created_at.replace("Z", "+00:00")
@@ -102,98 +99,79 @@ root_posts.sort(
 for i, item in enumerate(root_posts):
     post = item.post.record
     timestamp = datetime.fromisoformat(post.created_at.replace("Z", "+00:00"))
-
-    # Use your original slugify logic
     first_line_of_text = post.text.split("\n")[0] if post.text.strip() else ""
     slug = slugify(first_line_of_text, limit=30)
     filename = f"{timestamp.strftime('%Y-%m-%d')}-{slug}.md"
     filepath = os.path.join(OUTPUT_DIR, filename)
-
-    # Preserve your original title format
     title_line = f"\U0001f535\u2601\ufe0f # {i + 1:03d}"
 
-    # --- New Image and Content Logic ---
-    front_matter_images_str = ""
-    content_lines = []
+    print(f"Processing post: {filename}")
+
     all_images_in_post = []
+    content_lines = []
 
-    thread = client.app.bsky.feed.get_post_thread({"uri": item.post.uri})
-    is_thread = thread.thread.replies is not None and len(thread.thread.replies) > 0
+    thread_view = client.app.bsky.feed.get_post_thread(
+        {"uri": item.post.uri, "depth": 100}
+    )
 
-    if is_thread:
-        # Your original thread collection logic remains, we just handle images differently
-        # NOTE: This assumes a thread's images are treated as a single collection for the post.
-        temp_content = []
+    # --- Corrected Thread Processing Logic ---
+    def process_thread_node(node, is_root=True):
+        """
+        Recursively processes a node in a thread, collecting text and images.
+        """
+        # Skip posts from other authors
+        if node.post.author.handle != HANDLE:
+            return
 
-        # A modified version of your walk function to collect images and text separately
-        def walk_and_collect(node, slug):
-            post_text_content = []
-            post_image_paths = []
-            if node.post.author.handle != HANDLE:
-                return [], []
+        # For all non-root posts (replies), add a separator.
+        if not is_root:
+            content_lines.append("\n---\n")
 
-            ts = datetime.fromisoformat(
-                node.post.record.created_at.replace("Z", "+00:00")
-            )
-            post_text_content.append(f"**{ts.strftime('%B %d, %Y at %I:%M %p')}**")
+        # Add timestamp for each part of the thread
+        ts = datetime.fromisoformat(node.post.record.created_at.replace("Z", "+00:00"))
+        content_lines.append(f"**{ts.strftime('%B %d, %Y at %I:%M %p')}**\n")
 
-            images_in_node = (
-                node.post.embed.images if hasattr(node.post.embed, "images") else []
-            )
-            for img in images_in_node:
-                img_url = img.fullsize
-                # Use a unique index for each image download
-                local_path = download_image(
-                    img_url, slug, len(all_images_in_post) + len(post_image_paths)
-                )
-                if local_path:
-                    post_image_paths.append(local_path)
+        # Add text content if it exists
+        text_content = node.post.record.text.strip()
+        if text_content:
+            content_lines.append(text_content)
 
-            content = node.post.record.text.strip()
-            if content:
-                post_text_content.append(f"\n{content}")
-
-            # Recurse and handle replies
-            replies = getattr(node, "replies", []) or []
-            all_reply_text = []
-            all_reply_images = []
-            if replies:
-                post_text_content.append("\n---\n")
-
-            for reply in replies:
-                reply_text, reply_images = walk_and_collect(reply, slug)
-                all_reply_text.extend(reply_text)
-                all_reply_images.extend(reply_images)
-
-            # Combine current post content with replies
-            full_text_so_far = post_text_content + all_reply_text
-            full_images_so_far = post_image_paths + all_reply_images
-            return full_text_so_far, full_images_so_far
-
-        content_lines, all_images_in_post = walk_and_collect(thread.thread, slug)
-
-    else:
-        # Logic for a single, non-thread post
-        images = item.post.embed.images if hasattr(item.post.embed, "images") else []
-        for j, img in enumerate(images):
+        # Download and collect image paths from the current node
+        images_in_node = (
+            node.post.embed.images if hasattr(node.post.embed, "images") else []
+        )
+        for img in images_in_node:
             img_url = img.fullsize
-            local_path = download_image(img_url, slug, j)
+            local_path = download_image(img_url, slug, len(all_images_in_post))
             if local_path:
                 all_images_in_post.append(local_path)
 
-        text = post.text.strip()
-        if text:
-            content_lines.append(text)
+        # Process replies recursively
+        if hasattr(node, "replies") and node.replies:
+            for reply in sorted(node.replies, key=lambda r: r.post.record.created_at):
+                process_thread_node(reply, is_root=False)
+
+    # Start processing from the root of the thread
+    if thread_view.thread:
+        process_thread_node(thread_view.thread)
 
     # --- Apply Conditional Image Logic ---
+    front_matter_images_str = ""
     if len(all_images_in_post) > 1:
         image_list_yaml = "\n".join([f"  - {p}" for p in all_images_in_post])
         front_matter_images_str = f"images:\n{image_list_yaml}"
     elif len(all_images_in_post) == 1:
-        # If there's one image, add it to the top of the content
+        # Embed single image directly into the content
         alt_text = slugify(first_line_of_text) or "Post image"
-        image_md = f"![{alt_text}]({all_images_in_post[0]}){{: .blog-image .med}}\n"
-        content_lines.insert(0, image_md)
+        image_md = f"![{alt_text}]({all_images_in_post[0]}){{: .blog-image .med}}"
+        # Find the first text content to prepend the image to.
+        # This ensures it appears with the text of the post it was attached to.
+        for idx, line in enumerate(content_lines):
+            if not line.startswith("**") and not line.startswith("\n---"):
+                content_lines.insert(idx, image_md)
+                break
+        else:  # If no text content, add it at the end
+            content_lines.append(image_md)
 
     # --- Write the file ---
     with open(filepath, "w", encoding="utf-8") as f:
@@ -204,13 +182,11 @@ for i, item in enumerate(root_posts):
         if front_matter_images_str:
             f.write(f"{front_matter_images_str}\n")
         f.write("---\n\n")
-        f.write(f"{chr(10).join(content_lines)}\n")
+        f.write("\n".join(content_lines))
 
     print(f"  -> Created file: {filepath}")
 
-# After successfully processing all new posts, update the timestamp
 if root_posts:
-    # Get the timestamp of the most recent post from this run to save
     latest_post_ts = datetime.fromisoformat(
         root_posts[-1].post.record.created_at.replace("Z", "+00:00")
     )
