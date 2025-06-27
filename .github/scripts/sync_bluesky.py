@@ -109,9 +109,7 @@ for i, item in enumerate(root_posts):
 
     print(f"Processing post: {filename}")
 
-    # Use a single list to hold all content blocks for the final file.
     final_content_blocks = []
-    # Use a counter to ensure every downloaded image has a unique filename for this post.
     image_download_counter = 0
 
     thread_view = client.app.bsky.feed.get_post_thread(
@@ -122,24 +120,20 @@ for i, item in enumerate(root_posts):
         """
         Processes a node, creating a single block of text and images, and then processes its replies.
         """
-        nonlocal image_download_counter
-        # Skip posts from other authors
+        global image_download_counter  # FIX: Use 'global' instead of 'nonlocal'
+
         if node.post.author.handle != HANDLE:
             return
 
-        # Start a list to hold the content for just this one post in the thread
         current_post_content = []
 
-        # Add timestamp
         ts = datetime.fromisoformat(node.post.record.created_at.replace("Z", "+00:00"))
         current_post_content.append(f"**{ts.strftime('%B %d, %Y at %I:%M %p')}**")
 
-        # Add text content
         text_content = node.post.record.text.strip()
         if text_content:
             current_post_content.append(text_content)
 
-        # Download images and add their Markdown to this post's content
         images_in_node = (
             node.post.embed.images if hasattr(node.post.embed, "images") else []
         )
@@ -152,20 +146,15 @@ for i, item in enumerate(root_posts):
                 )
                 image_download_counter += 1
 
-        # Join the content for this specific post and add it to the main list
         final_content_blocks.append("\n\n".join(current_post_content))
 
-        # Process replies recursively, which will append their own blocks to the main list
         if hasattr(node, "replies") and node.replies:
             for reply in sorted(node.replies, key=lambda r: r.post.record.created_at):
                 process_thread_node(reply)
 
-    # Start the recursive processing
     if thread_view.thread:
         process_thread_node(thread_view.thread)
 
-    # --- Write the file ---
-    # Join all the content blocks with a separator
     final_content = "\n\n---\n\n".join(final_content_blocks)
 
     with open(filepath, "w", encoding="utf-8") as f:
@@ -178,7 +167,6 @@ for i, item in enumerate(root_posts):
 
     print(f"  -> Created file: {filepath}")
 
-# Update timestamp after all posts are processed
 if root_posts:
     latest_post_ts = datetime.fromisoformat(
         root_posts[-1].post.record.created_at.replace("Z", "+00:00")
