@@ -107,67 +107,71 @@ for i, item in enumerate(root_posts):
 
     print(f"Processing post: {filename}")
 
-    # Initialize lists to hold all content and images for the entire post/thread
-    all_content_blocks = []
-    all_image_paths = []
+    all_images_in_post = []
+    content_lines = []
 
     thread_view = client.app.bsky.feed.get_post_thread(
         {"uri": item.post.uri, "depth": 100}
     )
 
-    # This recursive function will now only collect information.
-    # The decision of how to format it will happen after the whole thread is processed.
-    def collect_thread_data(node, is_root=True):
+    # --- Corrected Thread Processing Logic ---
+    def process_thread_node(node, is_root=True):
+        """
+        Recursively processes a node in a thread, collecting text and images.
+        """
+        # Skip posts from other authors
         if node.post.author.handle != HANDLE:
             return
 
-        # For replies, add a separator before the content.
+        # For all non-root posts (replies), add a separator.
         if not is_root:
-            all_content_blocks.append("---")
+            content_lines.append("\n---\n")
 
-        # Create a block for the current post's text content.
-        current_text_block = []
+        # Add timestamp for each part of the thread
         ts = datetime.fromisoformat(node.post.record.created_at.replace("Z", "+00:00"))
-        current_text_block.append(f"**{ts.strftime('%B %d, %Y at %I:%M %p')}**")
+        content_lines.append(f"**{ts.strftime('%B %d, %Y at %I:%M %p')}**\n")
 
+        # Add text content if it exists
         text_content = node.post.record.text.strip()
         if text_content:
-            current_text_block.append(text_content)
-        all_content_blocks.append("\n\n".join(current_text_block))
+            content_lines.append(text_content)
 
-        # Download and collect all image paths from the current post.
+        # Download and collect image paths from the current node
         images_in_node = (
             node.post.embed.images if hasattr(node.post.embed, "images") else []
         )
         for img in images_in_node:
             img_url = img.fullsize
-            local_path = download_image(img_url, slug, len(all_image_paths))
+            local_path = download_image(img_url, slug, len(all_images_in_post))
             if local_path:
-                all_image_paths.append(local_path)
+                all_images_in_post.append(local_path)
 
-        # Recurse through replies.
+        # Process replies recursively
         if hasattr(node, "replies") and node.replies:
             for reply in sorted(node.replies, key=lambda r: r.post.record.created_at):
-                collect_thread_data(reply, is_root=False)
+                process_thread_node(reply, is_root=False)
 
-    # Start collecting data from the root of the thread.
+    # Start processing from the root of the thread
     if thread_view.thread:
-        collect_thread_data(thread_view.thread)
+        process_thread_node(thread_view.thread)
 
-    # Now, decide how to format the content based on the number of images collected.
+    # --- Apply Conditional Image Logic ---
     front_matter_images_str = ""
-    final_content = "\n\n".join(all_content_blocks)
-
-    if len(all_image_paths) > 1:
-        # More than one image: create the gallery front matter.
-        image_list_yaml = "\n".join([f"  - {p}" for p in all_image_paths])
+    if len(all_images_in_post) > 1:
+        image_list_yaml = "\n".join([f"  - {p}" for p in all_images_in_post])
         front_matter_images_str = f"images:\n{image_list_yaml}"
-        # The content is just the text blocks.
-    elif len(all_image_paths) == 1:
-        # Exactly one image: embed it at the top of the text content.
+    elif len(all_images_in_post) == 1:
+        # Embed single image directly into the content
         alt_text = slugify(first_line_of_text) or "Post image"
-        image_md = f"![{alt_text}]({all_image_paths[0]}){{: .blog-image .med}}"
-        final_content = f"{image_md}\n\n{final_content}"
+        image_md = f"![{alt_text}]({all_images_in_post[0]}){{: .blog-image .med}}"
+        # Find the first text content to prepend the image to.
+        # This ensures it appears with the text of the post it was attached to.
+        for idx, line in enumerate(content_lines):
+            if not line.startswith("**") and not line.startswith("\n---"):
+                content_lines.insert(idx, image_md)
+                break
+        else:  # If no text content, add it at the end
+            content_lines.append(image_md)
 
     # --- Write the file ---
     with open(filepath, "w", encoding="utf-8") as f:
@@ -176,9 +180,9 @@ for i, item in enumerate(root_posts):
         f.write(f'title: "{title_line}"\n')
         f.write(f"date: {timestamp.strftime('%Y-%m-%d %H:%M:%S %z')}\n")
         if front_matter_images_str:
-            f.write(front_matter_images_str)
+            f.write(f"{front_matter_images_str}\n")
         f.write("---\n\n")
-        f.write(final_content)
+        f.write("\n".join(content_lines))
 
     print(f"  -> Created file: {filepath}")
 
