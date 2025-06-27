@@ -1,0 +1,18 @@
+{% assign images = include.images %}
+{% assign count = images | size %}
+{% assign extra = count | minus: 4 %}
+
+<div class="gallery-preview gallery-{{ count }}">
+  {% for image in images limit:4 %}
+    <div class="gallery-cell">
+      <a href="{{ include.post_url | relative_url }}#image-{{ forloop.index }}">
+        <img src="{{ image | relative_url }}" alt="Gallery image preview">
+        {% if forloop.last and count > 4 %}
+          <div class="overlay">
+            <span class="overlay-text">+{{ extra }}</span>
+          </div>
+        {% endif %}
+      </a>
+    </div>
+  {% endfor %}
+</div>

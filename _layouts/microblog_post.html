@@ -11,6 +11,14 @@ layout: default
   </header>
   <div class="microblog-content">
     {{ content }}
+
+    {% if page.images %}
+      <div class="post-gallery">
+        {% for image in page.images %}
+          <img id="image-{{ forloop.index }}" src="{{ image | relative_url }}" alt="Gallery image {{ forloop.index }}" loading="lazy">
+        {% endfor %}
+      </div>
+    {% endif %}
   </div>
 </article>
 
