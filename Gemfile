@@ -1,0 +1,1 @@
+gem 'jekyll-image-size'
