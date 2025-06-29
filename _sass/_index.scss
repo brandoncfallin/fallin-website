@@ -242,3 +242,45 @@ span{
     font-size: 0.9rem;
   }
 }
+
+/* Florida State Parks Progress */
+.parks-container {
+    background-color: #546342;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 1.5em 0;
+}
+
+.parks-container h4 {
+    margin: 0 0 8px 0;
+    font-weight: normal;
+    color: #f9f9f9;
+    font-size: 1rem;
+}
+
+.dark .parks-container h4 {
+    color: #f9f9f9;
+}
+
+.progress-container {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    height: 20px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.dark .progress-container {
+    background-color: #222222;
+}
+
+.progress-bar {
+    background-color: #edd048;
+    height: 100%;
+}
+
+.parks-container p {
+    margin: 4px 0 0 0;
+    font-size: 1rem;
+    color: #f0f0f0;
+}
