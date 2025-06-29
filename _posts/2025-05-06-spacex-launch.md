@@ -16,4 +16,4 @@ Tonight's SpaceX launch as seen from Ponte Vedra Beach, FL. First launch I have 
 
 Stitched images from my Fujifilm X100T. The EVF shade locked up this weekend and I'm pretty bummed about it 
 
-~~~
+<p style="display:none">~~~</p>

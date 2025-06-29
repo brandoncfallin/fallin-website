@@ -14,4 +14,4 @@ Over the last few months, I've built a custom quadcopter for multi-agent researc
 
 It's steady as a rock and super fun to fly. 35 mins of hover time!
 
-~~~
+<p style="display:none">~~~</p>
