@@ -11,7 +11,7 @@ display_footer: true
         {% include profile_image.html %}
         <div class="profile-title">
         <h1 id="brandon-fallin" class="bottom-gone-h1">Brandon Fallin</h1>
-        <h4 id="graduate-research-assistant-university-of-florida" class="bottom-gone-h4">Graduate Research Assistant @ University of Florida</h4>
+        <h4 id="graduate-research-assistant-university-of-florida" class="bottom-gone-h4">PhD Candidate @ University of Florida</h4>
         </div>
       </div>
       <p>

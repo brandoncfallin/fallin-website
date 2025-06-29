@@ -2,17 +2,40 @@
 {% assign count = images | size %}
 {% assign extra = count | minus: 4 %}
 
-<div class="gallery-preview gallery-{{ count }}">
-  {% for image in images limit:4 %}
-    <div class="gallery-cell">
-      <a href="{{ include.post_url | relative_url }}#image-{{ forloop.index }}">
-        <img src="{{ image | relative_url }}" alt="Gallery image preview">
-        {% if forloop.last and count > 4 %}
-          <div class="overlay">
-            <span class="overlay-text">+{{ extra }}</span>
-          </div>
-        {% endif %}
-      </a>
-    </div>
+<div class="photoswipe-gallery gallery-preview gallery-{{ count }}">
+  
+  {% for image_url in images %}
+    {%- assign image_path = image_url | prepend: site.source | prepend: "/" -%}
+    
+    {% if forloop.index <= 4 %}
+      <div class="gallery-cell">
+        <a href="{{ image_url | relative_url }}"
+           class="photoswipe"
+           data-pswp-width="{% imagesize {{ image_path }}:width %}"
+           data-pswp-height="{% imagesize {{ image_path }}:height %}"
+           target="_blank">
+          
+          <img src="{{ image_url | relative_url }}" alt="Gallery image preview">
+          
+          {%- comment -%}
+            CORRECTED LOGIC: Show overlay on the 4th item if count > 4.
+          {%- endcomment -%}
+          {% if forloop.index == 4 and count > 4 %}
+            <div class="overlay">
+              <span class="overlay-text">+{{ extra }}</span>
+            </div>
+          {% endif %}
+        </a>
+      </div>
+    {% else %}
+      {%- comment -%}
+        For images 5+, create hidden links for PhotoSwipe to find.
+      {%- endcomment -%}
+      <a href="{{ image_url | relative_url }}"
+         class="photoswipe photoswipe-hidden"
+         data-pswp-width="{% imagesize {{ image_path }}:width %}"
+         data-pswp-height="{% imagesize {{ image_path }}:height %}"
+         target="_blank"></a>
+    {% endif %}
   {% endfor %}
 </div>

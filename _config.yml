@@ -1,8 +1,11 @@
 title: Brandon Fallin
-description: Graduate Research Assistant @ University of Florida
+description: PhD Candidate @ University of Florida
 domain: brandoncfallin.com   
 url: https://brandoncfallin.com
 baseurl: ""
+
+plugins:
+  - jekyll-image-size
 
 # Build settings
 markdown: kramdown

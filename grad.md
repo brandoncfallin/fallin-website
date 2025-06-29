@@ -3,67 +3,61 @@ layout: photos
 title: Grad Photos
 ---
 
-<div id="myModal" class="modal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <div class="modal-content">
-        <div class="mySlides">
-            <img src="{{ '/assets/images/grad/grad-13.webp' | relative_url }}" class="modal-image-vertical">
-        </div>
-        <div class="mySlides">
-            <img src="{{ '/assets/images/grad/grad-10.webp' | relative_url }}" class="modal-image-horizontal">
-        </div>
-        <div class="mySlides">
-            <img src="{{ '/assets/images/grad/grad-14.webp' | relative_url }}" class="modal-image-vertical">
-        </div>
-        <div class="mySlides">
-            <img src="{{ '/assets/images/grad/grad-4.webp' | relative_url }}" class="modal-image-vertical">
-        </div>
-        <div class="mySlides">
-            <img src="{{ '/assets/images/grad/grad-12.webp' | relative_url }}" class="modal-image-horizontal">
-        </div>
-        <div class="mySlides">
-            <img src="{{ '/assets/images/grad/grad-8.webp' | relative_url }}" class="modal-image-vertical">
-        </div>
-        <div class="mySlides">
-            <img src="{{ '/assets/images/grad/grad-5.webp' | relative_url }}" class="modal-image-vertical">
-        </div>
-        <div class="mySlides">
-            <img src="{{ '/assets/images/grad/grad-15.webp' | relative_url }}" class="modal-image-vertical">
-        </div>
-        <div class="mySlides">
-            <img src="{{ '/assets/images/grad/grad-3.webp' | relative_url }}" class="modal-image-horizontal">
-        </div>
-        <div class="mySlides">
-            <img src="{{ '/assets/images/grad/grad-1.webp' | relative_url }}" class="modal-image-horizontal">
-        </div>
-        <div class="mySlides">
-            <img src="{{ '/assets/images/grad/grad-9.webp' | relative_url }}" class="modal-image-horizontal">
-        </div>
-        <div class="mySlides">
-            <img src="{{ '/assets/images/grad/grad-11.webp' | relative_url }}" class="modal-image-vertical">
-        </div>
-    </div>
-</div>
-
-<div class="photo-gallery">
+<div class="photoswipe-gallery">
   <div class="row">
     <div class="column">
-      <img src="{{ '/assets/images/grad/small/grad-13.webp' | relative_url }}" onclick="openModal();currentSlide(1)" loading="lazy" alt="Grad photo 1">
-      <img src="{{ '/assets/images/grad/small/grad-4.webp' | relative_url }}" onclick="openModal();currentSlide(4)" loading="lazy" alt="Grad photo 4">
-      <img src="{{ '/assets/images/grad/small/grad-5.webp' | relative_url }}" onclick="openModal();currentSlide(7)" loading="lazy" alt="Grad photo 7">
+		{% include photo.html
+		url="/assets/images/grad/small/grad-13.webp"
+		class="large-version"
+		%}
+		{% include photo.html
+		url="/assets/images/grad/small/grad-4.webp"
+		class="large-version"
+		%}
+		{% include photo.html
+		url="/assets/images/grad/small/grad-5.webp"
+		class="large-version"
+		%}
     </div>
     <div class="column">
-      <img src="{{ '/assets/images/grad/small/grad-10.webp' | relative_url }}" onclick="openModal();currentSlide(2)" loading="lazy" alt="Grad photo 2">
-      <img src="{{ '/assets/images/grad/small/grad-12.webp' | relative_url }}" onclick="openModal();currentSlide(5)" loading="lazy" alt="Grad photo 5">
-      <img src="{{ '/assets/images/grad/small/grad-15.webp' | relative_url }}" onclick="openModal();currentSlide(8)" loading="lazy" alt="Grad photo 8">
-      <img src="{{ '/assets/images/grad/small/grad-1.webp' | relative_url }}" onclick="openModal();currentSlide(10)" loading="lazy" alt="Grad photo 10">
-      <img src="{{ '/assets/images/grad/small/grad-9.webp' | relative_url }}" onclick="openModal();currentSlide(11)" loading="lazy" alt="Grad photo 11">
+		{% include photo.html
+		url="/assets/images/grad/small/grad-10.webp"
+		class="large-version"
+		%}
+		{% include photo.html
+		url="/assets/images/grad/small/grad-12.webp"
+		class="large-version"
+		%}
+		{% include photo.html
+		url="/assets/images/grad/small/grad-15.webp"
+		class="large-version"
+		%}
+		{% include photo.html
+		url="/assets/images/grad/small/grad-1.webp"
+		class="large-version"
+		%}
+		{% include photo.html
+		url="/assets/images/grad/small/grad-9.webp"
+		class="large-version"
+		%}
     </div>
     <div class="column">
-      <img src="{{ '/assets/images/grad/small/grad-14.webp' | relative_url }}" onclick="openModal();currentSlide(3)" loading="lazy" alt="Grad photo 3">
-      <img src="{{ '/assets/images/grad/small/grad-8.webp' | relative_url }}" onclick="openModal();currentSlide(6)" loading="lazy" alt="Grad photo 6">
-      <img src="{{ '/assets/images/grad/small/grad-3.webp' | relative_url }}" onclick="openModal();currentSlide(9)" loading="lazy" alt="Grad photo 9">
-      <img src="{{ '/assets/images/grad/small/grad-11.webp' | relative_url }}" onclick="openModal();currentSlide(12)" loading="lazy" alt="Grad photo 12">
+		{% include photo.html
+		url="/assets/images/grad/small/grad-14.webp"
+		class="large-version"
+		%}
+		{% include photo.html
+		url="/assets/images/grad/small/grad-8.webp"
+		class="large-version"
+		%}
+		{% include photo.html
+		url="/assets/images/grad/small/grad-3.webp"
+		class="large-version"
+		%}
+		{% include photo.html
+		url="/assets/images/grad/small/grad-11.webp"
+		class="large-version"
+		%}
     </div>
   </div>
 </div>

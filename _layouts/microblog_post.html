@@ -9,17 +9,16 @@ layout: default
       {{ page.date | date: "%B %d, %Y at %I:%M %p" }}
     </time>
   </header>
-  <div class="microblog-content">
+  
+  {%- comment -%}
+    The 'photoswipe-gallery' class is on the main content div.
+    The 'content' variable now contains all text and PhotoSwipe-enabled images, correctly grouped.
+    The old image loop at the bottom has been REMOVED.
+  {%- endcomment -%}
+  <div class="microblog-content photoswipe-gallery">
     {{ content }}
-
-    {% if page.images %}
-      <div class="post-gallery">
-        {% for image in page.images %}
-          <img id="image-{{ forloop.index }}" src="{{ image | relative_url }}" alt="Gallery image {{ forloop.index }}" loading="lazy">
-        {% endfor %}
-      </div>
-    {% endif %}
   </div>
+
 </article>
 
 <script>

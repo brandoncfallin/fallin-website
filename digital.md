@@ -45,29 +45,62 @@ title: Digital Photos
   </div>
 </div>
 
-<div class="row">
-  <div class="column">
-    <div class="vert-container">
-      <img src="{{ '/assets/images/digital/small/digital-4.webp' | relative_url }}" onclick="openModal();currentSlide(1)" fetchpriority="high">
-    </div>
-    <div class="horiz-container">
-      <img src="{{ '/assets/images/digital/small/digital-13.webp' | relative_url }}" onclick="openModal();currentSlide(4)" fetchpriority="high">
-    </div>
-    <img src="{{ '/assets/images/digital/small/digital-15.webp' | relative_url }}" onclick="openModal();currentSlide(7)" fetchpriority="high">
-    <img src="{{ '/assets/images/digital/small/digital-6.webp' | relative_url }}" onclick="openModal();currentSlide(10)" fetchpriority="high">
-  </div>
-  <div class="column">
-    <img src="{{ '/assets/images/digital/small/digital-14.webp' | relative_url }}" onclick="openModal();currentSlide(2)" fetchpriority="high">
-    <img src="{{ '/assets/images/digital/small/digital-9.webp' | relative_url }}" onclick="openModal();currentSlide(5)" fetchpriority="high">
-    <img src="{{ '/assets/images/digital/small/digital-3.webp' | relative_url }}" onclick="openModal();currentSlide(8)" fetchpriority="high">
-    <img src="{{ '/assets/images/digital/small/digital-8.webp' | relative_url }}" onclick="openModal();currentSlide(11)" fetchpriority="high">
-  </div>
-  <div class="column">
-    <img src="{{ '/assets/images/digital/small/digital-16.webp' | relative_url }}" onclick="openModal();currentSlide(3)" fetchpriority="high">
-    <img src="{{ '/assets/images/digital/small/digital-5.webp' | relative_url }}" onclick="openModal();currentSlide(6)" fetchpriority="high">
-    <img src="{{ '/assets/images/digital/small/digital-7.webp' | relative_url }}" onclick="openModal();currentSlide(9)" fetchpriority="high">
-    <img src="{{ '/assets/images/digital/small/digital-2.webp' | relative_url }}" onclick="openModal();currentSlide(12)" fetchpriority="high">
-  </div>
+<div class="photoswipe-gallery">
+	<div class="row">
+	<div class="column">
+			{% include photo.html
+			url="/assets/images/digital/small/digital-4.webp"
+			class="large-version"
+			%}
+			{% include photo.html
+			url="/assets/images/digital/small/digital-13.webp"
+			class="large-version"
+			%}
+			{% include photo.html
+			url="/assets/images/digital/small/digital-15.webp"
+			class="large-version"
+			%}
+			{% include photo.html
+			url="/assets/images/digital/small/digital-6.webp"
+			class="large-version"
+			%}
+	</div>
+	<div class="column">
+		{% include photo.html
+		url="/assets/images/digital/small/digital-14.webp"
+		class="large-version"
+		%}
+		{% include photo.html
+			url="/assets/images/digital/small/digital-9.webp"
+			class="large-version"
+		%}
+		{% include photo.html
+			url="/assets/images/digital/small/digital-3.webp"
+			class="large-version"
+		%}
+		{% include photo.html
+			url="/assets/images/digital/small/digital-8.webp"
+			class="large-version"
+		%}
+	</div>
+	<div class="column">
+		{% include photo.html
+		url="/assets/images/digital/small/digital-16.webp"
+		class="large-version"
+		%}
+		{% include photo.html
+			url="/assets/images/digital/small/digital-5.webp"
+			class="large-version"
+		%}
+		{% include photo.html
+			url="/assets/images/digital/small/digital-7.webp"
+			class="large-version"
+		%}
+		{% include photo.html
+			url="/assets/images/digital/small/digital-2.webp"
+			class="large-version"
+		%}
+	</div>
 </div>
 
 <div class="photos-back">
