@@ -34,7 +34,7 @@ jobs:
           pip install atproto requests Pillow
 
       - name: Run Bluesky Sync
-        run: python sync_bluesky.py
+        run: python .github/scripts/sync_bluesky.py
         env:
           BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
           BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
