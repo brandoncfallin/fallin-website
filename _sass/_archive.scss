@@ -1,0 +1,27 @@
+.archive-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  // Mobile view
+  @media (max-width: 478px) {
+    td {
+        display: block;
+    }
+
+    .titles {
+        font-weight: bold;
+    }
+
+  }
+
+  // Desktop view
+  @media (min-width: 479px) {
+    .titles {
+      width: 35%;
+    }
+    .dates {
+      width: 65%;
+      text-align: left;
+    }
+  }
+}
