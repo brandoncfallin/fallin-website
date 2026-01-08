@@ -5,7 +5,7 @@ display_footer: True
 ---
 
 <p>
-I'm aiming to read at least 18 books this year.
+Missed my reading goal last year - shooting for 1 book/month in 2026
 <br>
 <br>
 🎧 = audiobook
