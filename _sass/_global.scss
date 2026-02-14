@@ -110,79 +110,76 @@ h6 { font-size: 1.0rem; }
 //     margin-top: 0;
 // }
 
-/* MOBILE */
-@media (min-width: 0px){
-	/* SITE-WIDE COMPONENTS */
-	.bottom-gone-h1{
-		margin-bottom: 0;
-	}
-	
-	.bottom-gone-h2{
-		margin-bottom: -10px;
-	}
+/* SITE-WIDE COMPONENTS */
+.bottom-gone-h1{
+	margin-bottom: 0;
+}
 
-	.bottom-gone-h4{
-		margin-bottom:0px;
-	}
+.bottom-gone-h2{
+	margin-bottom: -10px;
+}
 
-	/* HEADER */
-	.nav-bar{
-		display: none;
+.bottom-gone-h4{
+	margin-bottom:0px;
+}
+
+/* HEADER */
+.nav-bar{
+	display: none;
+}
+.nav-mobile{
+	display: block;
+}
+
+.drop-content{
+	display: none;
+	position: absolute;
+	background-color: white;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 50;
+}
+	.dark .drop-content{
+		background-color: #222;
+		box-shadow: 0px 0px 0px 0px rgba(160, 160, 160, 0.3);
+		border-style: solid;
+		border-width: 1px;
+		border-color: #757575;
 	}
-	.nav-mobile{
+	.drop-content a{
+		padding: 12px 16px;
 		display: block;
 	}
-
-	.drop-content{
-		display: none;
-		position: absolute;
-		background-color: white;
-		min-width: 160px;
-		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-		z-index: 1002;
-	}
-		.dark .drop-content{
-			background-color: #222;
-			box-shadow: 0px 0px 0px 0px rgba(160, 160, 160, 0.3);
-			border-style: solid;
-			border-width: 1px;
-			border-color: #757575;
+		.drop-content a:hover{
+			background-color: #e0e0e0;
 		}
-		.drop-content a{
-			padding: 12px 16px;
-			display: block;
-		}
-			.drop-content a:hover{
-				background-color: #e0e0e0;
+			.dark .drop-content a:hover{
+				background-color: #f1f1f1;
 			}
-				.dark .drop-content a:hover{
-					background-color: #f1f1f1;
-				}
 
-	.show {display:block;}
+.show {display:block;}
 
-	/* BODY */
-	body{
-		font-size: 1rem; // ~16px
+/* BODY */
+body{
+	font-size: 1rem; // ~16px
+}
+
+/* FOOTER */
+footer{
+	margin-top: 40px;
+}
+	footer div a{
+		margin: 0px 5px;
 	}
 
-	/* FOOTER */
-	footer{
-		margin-top: 40px;
-	}
-		footer div a{
-			margin: 0px 5px;
-		}
-	
-	.footer-tag{
-		margin-bottom: 2px;
-	}
-	.footer-links{
-		margin-bottom: 25px;
-	}
-	.footer-links a {
-		margin: 0 8px;
-	}
+.footer-tag{
+	margin-bottom: 2px;
+}
+.footer-links{
+	margin-bottom: 25px;
+}
+.footer-links a {
+	margin: 0 8px;
 }
 
 /* TABLET */
@@ -205,24 +202,6 @@ h6 { font-size: 1.0rem; }
 	nav a:first-child{
 		margin-left: 0px;
 	}
-
-	/* FOOTER */
-	footer{
-		/* font-size rule removed */
-	}
-}
-
-/* LAPTOP */
-@media (min-width: 767px){
-	/* FOOTER */
-	footer{
-		/* font-size rule removed */
-	}
-}
-
-/* DESKTOP */
-@media (min-width: 1023px){
-
 }
 
 /* MOBILE LANDSCAPE */

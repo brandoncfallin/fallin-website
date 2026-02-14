@@ -128,29 +128,23 @@ span{
 	color: #222;
 }
 
-/* MOBILE */
-@media (min-width: 0px){
-	/* PROFILE IMAGE */
-	.profile-image{
-		width: 90px;
-	}
+/* PROFILE IMAGE */
+.profile-image{
+	width: 90px;
+}
 
-	.profile-header {
-		padding-top: 1.5em;
-	}
+.profile-header {
+	padding-top: 1.5em;
+}
 
-	/* WORK EXPERIENCE */
-	/* All work-item spacing is now handled globally */
+/* WORK EXPERIENCE */
+.work-exp-image{
+	width: 3em;
+	border-radius: 7%;
+}
 
-	.work-exp-image{
-		width: 3em;
-		border-radius: 7%;
-	}
-
-	.work-exp-listing{
-		margin-left: 0.6em;
-    // margin-bottom: 0;
-	}
+.work-exp-listing{
+	margin-left: 0.6em;
 }
 
 /* TABLET */
@@ -169,11 +163,6 @@ span{
 	}
 }
 
-/* DESKTOP */
-@media (min-width: 1023px){
-
-}
-
 /* --- DESKTOP LAYOUT ADJUSTMENTS --- */
 @media (min-width: 479px) {
 
@@ -190,21 +179,27 @@ span{
     position: -webkit-sticky; /* For Safari */
     position: sticky;
     top: 0;
-    z-index: 1000;
-    
+    z-index: 100;
+
     background-color: white;
-    
+
     /* Bottom-only box shadow */
-    box-shadow: 0 4px 5px -2px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 4px -4px rgba(0,0,0,0.2);
 
     /* Vertical padding for the header */
     padding-top: 1em;
     padding-bottom: 1em;
+
+    /* Extend shadow wider than content */
+    margin-left: -1.5em;
+    margin-right: -1.5em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
   }
 
   .dark body > header {
     background-color: #222;
-    box-shadow: 0 4px 5px -2px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 4px -4px rgba(0,0,0,0.6);
   }
 }
 

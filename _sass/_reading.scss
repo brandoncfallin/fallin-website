@@ -20,10 +20,35 @@ table td{
 dialog{
 	font-family: Arial, sans-serif;
 	margin: auto;
-	padding:0.5em;
+	padding: 1em;
 	max-width: 85%;
 	max-height: 75%;
 	text-align: left;
+	position: fixed;
+}
+
+dialog[open] {
+	animation: dialog-open 125ms ease-out;
+}
+
+@keyframes dialog-open {
+	from {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+dialog::backdrop {
+	animation: backdrop-open 125ms ease-out;
+}
+
+@keyframes backdrop-open {
+	from { opacity: 0; }
+	to { opacity: 1; }
 }
 
 button{
@@ -69,70 +94,58 @@ td a{
 	display: inline-block;
 }
 
-.button-holder{
-	position: absolute !important;
-	top: 0 !important;
-	right: 0 !important;
-	line-height: 0 !important; /* Reset line height */
-	--webkit-margin-end: 0px !important;
+dialog .button-holder{
+	position: absolute;
+	top: 0.5em;
+	right: 0.5em;
 }
 
-.close {
-	position: absolute;
-	background-color: white;
+dialog .close {
+	background: none;
 	color: #999;
-	font-size: 35px;
+	font-size: 28px;
 	font-weight: 300;
-	margin: 0 !important;
-	padding: 0 !important; 
-	transform: translate(25%, -25%); /* Move half the button size up and right */
+	line-height: 1;
+	padding: 2px 6px;
+	cursor: pointer;
+	position: static;
 }
-	.close:hover, .close:focus {
+	dialog .close:hover, dialog .close:focus {
 		color: #222;
 		text-decoration: none;
-		cursor: pointer;
 	}
-	.dark .close{
-		background-color: #222;
-	}
-	.dark .close:hover, .dark .close:focus {
+	.dark dialog .close:hover, .dark dialog .close:focus {
 		color: white;
 	}
 
-/* MOBILE */
-@media (min-width: 0px){
-	table{
-		// font-size:18px;
-	}
-		table td{
-			display: flex;
-			padding: 0px 0px;
-			margin-left:-2px;
-			max-width: 500px;
-		}
+table td{
+	display: flex;
+	padding: 0px 0px;
+	margin-left:-2px;
+	max-width: 500px;
+}
 
-	.stars{
-		padding: 0px 0px;
-		margin-top: -2px;
-		margin-bottom: 10px;
-	}
+.stars{
+	padding: 0px 0px;
+	margin-top: -2px;
+	margin-bottom: 10px;
+}
 
-	.titles{
-		padding: 0px 0px;
-		font-weight: bold;
-	}
+.titles{
+	padding: 0px 0px;
+	font-weight: bold;
+}
 
-	.titles-clip{
-		text-decoration: underline;
-	}
-	
-	.titles-clip:hover{
-		cursor: pointer;
-	}
+.titles-clip{
+	text-decoration: underline;
+}
 
-	.clippings{
-		font-style: italic;
-	}
+.titles-clip:hover{
+	cursor: pointer;
+}
+
+.clippings{
+	font-style: italic;
 }
 
 /* TABLET */
@@ -173,9 +186,4 @@ td a{
 	dialog{
 		max-width: 553px;
 	}
-}
-
-/* DESKTOP */
-@media (min-width: 1023px){
-
 }

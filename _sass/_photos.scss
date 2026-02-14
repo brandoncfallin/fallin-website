@@ -1,6 +1,6 @@
 /* PHOTO CARDS */
 .pswp {
-  z-index: 999999 !important;
+  z-index: 500 !important;
 }
 
 .cards {
@@ -112,7 +112,7 @@
 .modal {
   display: none;
   position: fixed;
-  z-index: 2000;
+  z-index: 200;
   left: 0;
   top: 0;
   width: 100%;
@@ -167,59 +167,56 @@
   }
 }
 
-/* MOBILE */
-@media (min-width: 0px) {
-  /* PHOTO CARDS */
-  .cards {
-    gap: 1rem;
-    padding: 40px 18px 40px 18px;
-    height: 22.5em;
-    grid-template-columns: repeat(1, 1fr);
-  }
+/* PHOTO CARDS */
+.cards {
+  gap: 1rem;
+  padding: 40px 18px 40px 18px;
+  height: 22.5em;
+  grid-template-columns: repeat(1, 1fr);
+}
 
-  .card {
-    padding: 1rem;
-    max-height: 6em;
-    width: 70%;
-    border-radius: 10px;
-  }
+.card {
+  padding: 1rem;
+  max-height: 6em;
+  width: 70%;
+  border-radius: 10px;
+}
 
-  .card-title {
-    font-size: 1.3em;
-    letter-spacing: 0.3em;
-    font-weight: 100;
-  }
+.card-title {
+  font-size: 1.3em;
+  letter-spacing: 0.3em;
+  font-weight: 100;
+}
 
-  /* PHOTO GALLERY */
-  .column {
-    flex: 100%;
-    max-width: 100%;
-    padding: 1px;
-  }
+/* PHOTO GALLERY */
+.column {
+  flex: 100%;
+  max-width: 100%;
+  padding: 1px;
+}
 
-  .photos-back {
-    padding-top: 40px;
+.photos-back {
+  padding-top: 40px;
 
-    a {
-      padding-bottom: 20px;
-    }
+  a {
+    padding-bottom: 20px;
   }
+}
 
-  /* MODAL CONTENT */
-  .modal-image-vertical {
-    max-height: 90vh;
-    max-width: 90vw;
-  }
+/* MODAL CONTENT */
+.modal-image-vertical {
+  max-height: 90vh;
+  max-width: 90vw;
+}
 
-  .modal-image-horizontal {
-    max-width: 90vw;
-    max-height: 90vh;
-  }
+.modal-image-horizontal {
+  max-width: 90vw;
+  max-height: 90vh;
+}
 
-  .modal-image-square {
-    max-width: 85vw;
-    max-height: 85vh;
-  }
+.modal-image-square {
+  max-width: 85vw;
+  max-height: 85vh;
 }
 
 /* TABLET */
@@ -253,11 +250,6 @@
     max-width: 85vw;
     max-height: 85vh;
   }
-}
-
-/* LAPTOP */
-@media (min-width: 767px) {
-  // Add any laptop-specific styles here
 }
 
 /* DESKTOP */

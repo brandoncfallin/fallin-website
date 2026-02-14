@@ -7,7 +7,7 @@
      data-pswp-width="{% imagesize {{ large_image_path }}:width %}"
      data-pswp-height="{% imagesize {{ large_image_path }}:height %}">
 
-      <img class="image" src="{{ include.url | relative_url }}" alt="{{ include.alt }}">
+      <img class="image" src="{{ include.url | relative_url }}" alt="{{ include.alt }}" loading="lazy">
 
   </a>
 
@@ -19,7 +19,7 @@
      data-pswp-width="{% imagesize {{ image_path }}:width %}"
      data-pswp-height="{% imagesize {{ image_path }}:height %}">
 
-      <img class="image" src="{{ include.url | relative_url }}" alt="{{ include.alt }}">
+      <img class="image" src="{{ include.url | relative_url }}" alt="{{ include.alt }}" loading="lazy">
 
   </a>
 
