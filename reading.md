@@ -15,7 +15,7 @@ Missed my reading goal last year - shooting for 1 book/month in 2026
     {% include reading_table_2026.html %}
 </details>
 
-<details>
+<details open>
     <summary style="cursor: pointer;"><h3 class="no-bottom" style="display: inline;">2025</h3></summary>
     {% include reading_table_2025.html %}
 </details>
