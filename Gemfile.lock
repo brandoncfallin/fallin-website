@@ -13,17 +13,11 @@ GEM
       http_parser.rb (~> 0)
     eventmachine (1.2.7)
     fastimage (2.4.0)
-    ffi (1.17.2-arm64-darwin)
-    ffi (1.17.2-x64-mingw-ucrt)
-    ffi (1.17.2-x86_64-linux-gnu)
+    ffi (1.17.3-arm64-darwin)
+    ffi (1.17.3-x64-mingw-ucrt)
+    ffi (1.17.3-x86_64-linux-gnu)
     forwardable-extended (2.6.0)
-    google-protobuf (4.30.2-arm64-darwin)
-      bigdecimal
-      rake (>= 13)
-    google-protobuf (4.30.2-x64-mingw-ucrt)
-      bigdecimal
-      rake (>= 13)
-    google-protobuf (4.30.2-x86_64-linux)
+    google-protobuf (4.33.5)
       bigdecimal
       rake (>= 13)
     http_parser.rb (0.8.0)
